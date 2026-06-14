@@ -1,0 +1,33 @@
+[
+  {
+    "deprecated": false,
+    "address": "0xC2aF4132bAd08AbE5d9e4B01Cd71Bba30f86fd4",
+    "callToken": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "decimals": "18",
+      "symbol": "WETH"
+    },
+    "putToken": {
+      "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      "decimals": "6",
+      "symbol": "USDC"
+    },
+    "primePool": "0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443",
+    "optionsPricing": "0x2b99e3D41E67FB7b6b1B0a15EEbf7aa8f5B1d34",
+    "tokenURIFetcher": "0xabcdef1234567890abcdef1234567890abcdef12",
+    "pairName": "ETH-USDC",
+    "ticker": "ETH",
+    "chainId": 42161,
+    "pools": [],
+    "feeStrategy": {
+      "type": "flat",
+      "bps": 100
+    },
+    "premiums24h": 45230.50,
+    "volume24h": 1250000.00,
+    "protocolFees24h": 452.30,
+    "totalLiquidity": 8500000.00,
+    "availableLiquidity": 6200000.00,
+    "openInterest": 2300000.00
+  }
+]

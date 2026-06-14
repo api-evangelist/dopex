@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/PurchasePositionsResponseDto",
+  "title": "PurchasePositionsResponseDto",
+  "description": "A user's current options position in a CLAMM market",
+  "type": "object",
+  "properties": {
+    "size": {
+      "type": "string",
+      "description": "Size of the options position"
+    },
+    "premium": {
+      "type": "string",
+      "description": "Premium paid for the position"
+    },
+    "strike": {
+      "type": "number",
+      "description": "Strike price of the option"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["call", "put"],
+      "description": "Option type: call or put"
+    },
+    "token": {
+      "$ref": "TokenDto.json",
+      "description": "The underlying token for the option"
+    },
+    "meta": {
+      "$ref": "PurchasePositionMetaDto.json",
+      "description": "Metadata about the position including expiry and handlers"
+    }
+  },
+  "required": ["size", "premium", "strike", "type", "token", "meta"]
+}

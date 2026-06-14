@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/PurchasePositionMetaDto",
+  "title": "PurchasePositionMetaDto",
+  "description": "Metadata for an options purchase position including expiry, handlers, and liquidity breakdowns",
+  "type": "object",
+  "properties": {
+    "tokenId": {
+      "type": "string",
+      "description": "ERC721 token ID representing the options position NFT"
+    },
+    "expiry": {
+      "type": "number",
+      "description": "Unix timestamp when the option expires"
+    },
+    "handlers": {
+      "type": "array",
+      "items": {
+        "$ref": "PurchasePositionMetaHandlerDto.json"
+      },
+      "description": "List of handlers providing liquidity for this position"
+    },
+    "liquidities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Liquidity amounts per handler"
+    }
+  },
+  "required": ["tokenId", "expiry", "handlers", "liquidities"]
+}

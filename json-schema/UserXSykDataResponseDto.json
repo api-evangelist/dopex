@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/UserXSykDataResponseDto",
+  "title": "UserXSykDataResponseDto",
+  "description": "xSYK staking and vesting data for a user account, including total allocations and individual vest positions",
+  "type": "object",
+  "properties": {
+    "totalXSykAllocated": {
+      "type": "string",
+      "description": "Total xSYK tokens allocated (staked or vesting) by the user"
+    },
+    "totalSykPending": {
+      "type": "string",
+      "description": "Total SYK tokens pending from vesting positions"
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "$ref": "VestPositionsResponseDto.json"
+      },
+      "description": "List of individual vest positions for the account"
+    }
+  },
+  "required": ["totalXSykAllocated", "totalSykPending", "positions"]
+}

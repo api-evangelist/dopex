@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/OptionMarketsResponseDtoV2",
+  "title": "OptionMarketsResponseDtoV2",
+  "description": "Option market data returned by the v1.1 multi-chain endpoint, including 24h statistics and liquidity metrics",
+  "type": "object",
+  "properties": {
+    "deprecated": {
+      "type": "boolean",
+      "description": "Whether this option market is deprecated"
+    },
+    "address": {
+      "type": "string",
+      "description": "Contract address of the option market"
+    },
+    "callToken": {
+      "$ref": "TokenDto.json",
+      "description": "The call-side (collateral) token"
+    },
+    "putToken": {
+      "$ref": "TokenDto.json",
+      "description": "The put-side (collateral) token"
+    },
+    "primePool": {
+      "type": "string",
+      "description": "Address of the primary Uniswap v3 pool for this market"
+    },
+    "optionsPricing": {
+      "type": "string",
+      "description": "Address of the options pricing contract (Black-Scholes)"
+    },
+    "tokenURIFetcher": {
+      "type": "string",
+      "description": "Address of the ERC721 token URI fetcher"
+    },
+    "pairName": {
+      "type": "string",
+      "description": "Human-readable trading pair name (e.g., ETH-USDC)"
+    },
+    "ticker": {
+      "type": "string",
+      "description": "Short ticker symbol for the market"
+    },
+    "chainId": {
+      "type": "number",
+      "description": "EVM chain ID where this market is deployed"
+    },
+    "pools": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Associated liquidity pools"
+    },
+    "feeStrategy": {
+      "type": "object",
+      "description": "Fee strategy configuration for this market"
+    },
+    "premiums24h": {
+      "type": "number",
+      "description": "Total option premiums collected in the last 24 hours (USD)"
+    },
+    "volume24h": {
+      "type": "number",
+      "description": "Total trading volume in the last 24 hours (USD)"
+    },
+    "protocolFees24h": {
+      "type": "number",
+      "description": "Protocol fees earned in the last 24 hours (USD)"
+    },
+    "totalLiquidity": {
+      "type": "number",
+      "description": "Total liquidity available in the market (USD)"
+    },
+    "availableLiquidity": {
+      "type": "number",
+      "description": "Liquidity available for new options purchases (USD)"
+    },
+    "openInterest": {
+      "type": "number",
+      "description": "Current open interest across all strikes (USD)"
+    }
+  },
+  "required": [
+    "deprecated", "address", "callToken", "putToken", "primePool",
+    "optionsPricing", "tokenURIFetcher", "pairName", "ticker", "chainId",
+    "pools", "feeStrategy", "premiums24h", "volume24h", "protocolFees24h",
+    "totalLiquidity", "availableLiquidity", "openInterest"
+  ]
+}

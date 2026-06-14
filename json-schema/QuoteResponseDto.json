@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/QuoteResponseDto",
+  "title": "QuoteResponseDto",
+  "description": "Response containing the estimated cost for purchasing an option, including token details, premium, and fees",
+  "type": "object",
+  "properties": {
+    "token": {
+      "$ref": "TokenDto.json",
+      "description": "The payment token for the option premium"
+    },
+    "premium": {
+      "type": "string",
+      "description": "Option premium amount in token units (as string to preserve precision)"
+    },
+    "fees": {
+      "type": "string",
+      "description": "Protocol fees amount in token units"
+    }
+  },
+  "required": ["token", "premium", "fees"]
+}

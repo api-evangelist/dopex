@@ -1,0 +1,31 @@
+[
+  {
+    "size": "1000000000000000000",
+    "premium": "12500000",
+    "strike": 2000,
+    "type": "call",
+    "token": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "decimals": "18",
+      "symbol": "WETH"
+    },
+    "meta": {
+      "tokenId": "12345",
+      "expiry": 1704067200,
+      "handlers": [
+        {
+          "name": "UniswapV3 Handler",
+          "deprecated": false,
+          "handler": {
+            "address": "0x1234567890abcdef1234567890abcdef12345678"
+          },
+          "pool": {
+            "address": "0xabcdef1234567890abcdef1234567890abcdef12",
+            "fee": 500
+          }
+        }
+      ],
+      "liquidities": ["500000000000000000"]
+    }
+  }
+]

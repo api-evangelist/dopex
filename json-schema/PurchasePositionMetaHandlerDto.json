@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/PurchasePositionMetaHandlerDto",
+  "title": "PurchasePositionMetaHandlerDto",
+  "description": "Handler metadata indicating the DEX and liquidity pool sourcing options liquidity",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the handler/DEX"
+    },
+    "deprecated": {
+      "type": "boolean",
+      "description": "Whether this handler is deprecated"
+    },
+    "handler": {
+      "type": "object",
+      "description": "Handler contract details"
+    },
+    "pool": {
+      "type": "object",
+      "description": "Liquidity pool details"
+    }
+  },
+  "required": ["name", "deprecated", "handler", "pool"]
+}

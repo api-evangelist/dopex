@@ -1,0 +1,56 @@
+[
+  {
+    "1800": {
+      "totalLiquidity": "500000000000",
+      "availableLiquidity": "350000000000",
+      "utilization": "0.30",
+      "apr": "0.142",
+      "handler": {
+        "name": "UniswapV3 Handler",
+        "deprecated": false,
+        "handler": "0x1234567890abcdef1234567890abcdef12345678",
+        "pool": "0xabcdef1234567890abcdef1234567890abcdef12"
+      },
+      "meta": {
+        "hook": "0xdeadbeef1234567890abcdef1234567890abcdef",
+        "tickLower": -84200,
+        "tickUpper": -78000,
+        "totalTokenLiquidity": "285714285714",
+        "availableTokenLiquidity": "200000000000",
+        "totalLiquidity": "500000000000",
+        "availableLiquidity": "350000000000"
+      },
+      "token": {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "decimals": "6",
+        "symbol": "USDC"
+      }
+    },
+    "2000": {
+      "totalLiquidity": "750000000000",
+      "availableLiquidity": "600000000000",
+      "utilization": "0.20",
+      "apr": "0.095",
+      "handler": {
+        "name": "UniswapV3 Handler",
+        "deprecated": false,
+        "handler": "0x1234567890abcdef1234567890abcdef12345678",
+        "pool": "0xabcdef1234567890abcdef1234567890abcdef12"
+      },
+      "meta": {
+        "hook": "0xdeadbeef1234567890abcdef1234567890abcdef",
+        "tickLower": -76012,
+        "tickUpper": -69000,
+        "totalTokenLiquidity": "375000000000",
+        "availableTokenLiquidity": "300000000000",
+        "totalLiquidity": "750000000000",
+        "availableLiquidity": "600000000000"
+      },
+      "token": {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "decimals": "6",
+        "symbol": "USDC"
+      }
+    }
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "dopex": "https://api.stryke.xyz/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "address": "dopex:address",
+    "chainId": {
+      "@id": "dopex:chainId",
+      "@type": "xsd:integer"
+    },
+    "symbol": "dopex:symbol",
+    "decimals": "dopex:decimals",
+    "optionMarket": "dopex:optionMarket",
+    "strike": {
+      "@id": "dopex:strike",
+      "@type": "xsd:decimal"
+    },
+    "optionType": "dopex:optionType",
+    "premium": {
+      "@id": "dopex:premium",
+      "@type": "xsd:string"
+    },
+    "fees": {
+      "@id": "dopex:fees",
+      "@type": "xsd:string"
+    },
+    "size": "dopex:size",
+    "ttl": {
+      "@id": "dopex:ttl",
+      "@type": "xsd:integer"
+    },
+    "expiry": {
+      "@id": "dopex:expiry",
+      "@type": "xsd:integer"
+    },
+    "handler": "dopex:handler",
+    "hook": "dopex:hook",
+    "totalLiquidity": "dopex:totalLiquidity",
+    "availableLiquidity": "dopex:availableLiquidity",
+    "openInterest": "dopex:openInterest",
+    "utilization": "dopex:utilization",
+    "apr": "dopex:apr",
+    "pairName": "dopex:pairName",
+    "ticker": "dopex:ticker",
+    "primePool": "dopex:primePool",
+    "callToken": "dopex:callToken",
+    "putToken": "dopex:putToken",
+    "xSykAmount": "dopex:xSykAmount",
+    "sykAmount": "dopex:sykAmount",
+    "vestIndex": "dopex:vestIndex",
+    "duration": {
+      "@id": "dopex:duration",
+      "@type": "xsd:integer"
+    },
+    "blockTimestamp": {
+      "@id": "dopex:blockTimestamp",
+      "@type": "xsd:integer"
+    },
+    "transactionHash": "dopex:transactionHash",
+    "deprecated": {
+      "@id": "dopex:deprecated",
+      "@type": "xsd:boolean"
+    },
+    "slippage": {
+      "@id": "dopex:slippage",
+      "@type": "xsd:decimal"
+    },
+    "swapperId": "dopex:swapperId",
+    "optionId": "dopex:optionId",
+    "profit": "dopex:profit",
+    "TokenDto": "dopex:Token",
+    "OptionMarket": "dopex:OptionMarket",
+    "StrikePrice": "dopex:StrikePrice",
+    "OptionsPosition": "dopex:OptionsPosition",
+    "VestPosition": "dopex:VestPosition",
+    "LiquidityPosition": "dopex:LiquidityPosition"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "vocabulary": "Dopex / Stryke CLAMM Options API",
+  "description": "Domain vocabulary for the Dopex/Stryke Concentrated Liquidity AMM Options protocol on Arbitrum and EVM chains",
+  "terms": [
+    {
+      "term": "CLAMM",
+      "label": "Concentrated Liquidity AMM Options",
+      "definition": "Options market structure built on top of Uniswap v3-style concentrated liquidity AMMs, allowing LPs to provide capital within specific price tick ranges that serve as option strike prices"
+    },
+    {
+      "term": "SSOV",
+      "label": "Single Staking Option Vault",
+      "definition": "Legacy Dopex mechanism where LPs lock collateral for monthly epochs and sell call or put options at defined strike prices, earning premiums plus base DeFi yield"
+    },
+    {
+      "term": "optionMarket",
+      "label": "Option Market",
+      "definition": "A smart contract pair defining the call and put tokens, associated liquidity pools, and pricing logic for a specific asset pair (e.g., ETH-USDC)"
+    },
+    {
+      "term": "strikesChain",
+      "label": "Strikes Chain",
+      "definition": "The full options chain for a market showing all available strike prices, their liquidity depth, utilization, and APR for liquidity providers"
+    },
+    {
+      "term": "strike",
+      "label": "Strike Price",
+      "definition": "The price at which an option can be exercised, derived from the tick range boundaries of a Uniswap v3 concentrated liquidity position"
+    },
+    {
+      "term": "handler",
+      "label": "Handler",
+      "definition": "A smart contract that interfaces with a specific DEX or liquidity pool to source and manage options liquidity; identifies the DEX and liquidity pool providing collateral"
+    },
+    {
+      "term": "hook",
+      "label": "Hook",
+      "definition": "A contract defining constraints on liquidity use, including maximum duration (TTL) for which liquidity can be utilized and expiration conditions"
+    },
+    {
+      "term": "ttl",
+      "label": "Time To Live",
+      "definition": "The maximum allowable duration for which liquidity can be utilized as options collateral; a hook constraint parameter"
+    },
+    {
+      "term": "premium",
+      "label": "Option Premium",
+      "definition": "The price paid by an option buyer to acquire the right to buy (call) or sell (put) the underlying asset at the strike price; calculated using Black-Scholes with on-chain implied volatility"
+    },
+    {
+      "term": "xSYK",
+      "label": "Escrowed SYK",
+      "definition": "The escrowed/staked form of the SYK governance token; xSYK replaced the legacy DPX/rDPX dual-token model following Dopex's evolution into the Stryke protocol"
+    },
+    {
+      "term": "SYK",
+      "label": "Stryke Token",
+      "definition": "The governance token of the Stryke protocol, successor to the DPX token; xSYK is earned by staking SYK"
+    },
+    {
+      "term": "DPX",
+      "label": "Dopex Governance Token",
+      "definition": "Legacy governance and fee accrual token of the Dopex protocol; superseded by SYK following the Stryke rebrand"
+    },
+    {
+      "term": "rDPX",
+      "label": "Dopex Rebate Token",
+      "definition": "Legacy rebate token of the Dopex protocol used to compensate option writers for losses; superseded by the SYK/xSYK model"
+    },
+    {
+      "term": "vestPosition",
+      "label": "Vest Position",
+      "definition": "An xSYK vesting position representing escrowed SYK tokens that unlock over a specified duration period"
+    },
+    {
+      "term": "chainId",
+      "label": "Chain ID",
+      "definition": "EVM-standard numeric network identifier (e.g., 42161 for Arbitrum One, 5000 for Mantle) used to specify which blockchain to query"
+    },
+    {
+      "term": "callToken",
+      "label": "Call Token",
+      "definition": "The collateral token used for call options in a CLAMM market (typically the base asset, e.g., WETH)"
+    },
+    {
+      "term": "putToken",
+      "label": "Put Token",
+      "definition": "The collateral token used for put options in a CLAMM market (typically the quote/stablecoin asset, e.g., USDC)"
+    },
+    {
+      "term": "openInterest",
+      "label": "Open Interest",
+      "definition": "The total notional value of all outstanding (not yet exercised or expired) options positions in a market, expressed in USD"
+    },
+    {
+      "term": "primePool",
+      "label": "Prime Pool",
+      "definition": "The primary Uniswap v3 concentrated liquidity pool that serves as the underlying price source and liquidity venue for a CLAMM option market"
+    },
+    {
+      "term": "swapperId",
+      "label": "Swapper ID",
+      "definition": "Identifier for the swap routing contract used when exercising an in-the-money option; currently supports '1inch' and 'uni-v3'"
+    },
+    {
+      "term": "optionId",
+      "label": "Option ID",
+      "definition": "The ERC721 NFT token ID representing a specific options position; used when exercising a position"
+    },
+    {
+      "term": "utilization",
+      "label": "Liquidity Utilization",
+      "definition": "The ratio of reserved/sold options to total available liquidity at a given strike price; indicates how much of the LP capital is currently backing active options"
+    },
+    {
+      "term": "APR",
+      "label": "Annual Percentage Rate",
+      "definition": "Annualized yield rate earned by liquidity providers at a specific strike price from option premium income"
+    }
+  ]
+}

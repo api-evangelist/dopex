@@ -83,6 +83,8 @@ apis:
         url: https://defillama.com/protocol/dopex
       - type: CoinGecko
         url: https://www.coingecko.com/en/coins/dopex
+      - type: OpenAPI
+        url: openapi/stryke-api.yaml
 
   - aid: dopex:lp-management-api
     name: Dopex LP Management API

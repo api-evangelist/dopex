@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/VestPositionsResponseDto",
+  "title": "VestPositionsResponseDto",
+  "description": "Individual xSYK vesting position for a user account",
+  "type": "object",
+  "properties": {
+    "account": {
+      "type": "string",
+      "description": "Ethereum address of the position holder"
+    },
+    "duration": {
+      "type": "number",
+      "description": "Vesting duration in seconds"
+    },
+    "xSykAmount": {
+      "type": "string",
+      "description": "Amount of xSYK tokens in this vest position"
+    },
+    "sykAmount": {
+      "type": "string",
+      "description": "Amount of SYK tokens that will be received upon vest completion"
+    },
+    "vestIndex": {
+      "type": "string",
+      "description": "Unique index identifier for this vest position"
+    },
+    "blockTimestamp": {
+      "type": "number",
+      "description": "Unix timestamp of the block when this position was created"
+    },
+    "transactionHash": {
+      "type": "string",
+      "description": "Transaction hash of the vest position creation transaction"
+    }
+  },
+  "required": ["account", "duration", "xSykAmount", "sykAmount", "vestIndex", "blockTimestamp", "transactionHash"]
+}

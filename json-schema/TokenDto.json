@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.stryke.xyz/schemas/TokenDto",
+  "title": "TokenDto",
+  "description": "ERC20 token details including address, decimals, and symbol",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Address of the ERC20 token"
+    },
+    "decimals": {
+      "type": "string",
+      "description": "Decimals of the ERC20 token"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Symbol of the ERC20 token"
+    }
+  },
+  "required": ["address", "decimals", "symbol"]
+}

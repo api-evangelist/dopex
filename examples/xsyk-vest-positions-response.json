@@ -1,0 +1,26 @@
+[
+  {
+    "totalXSykAllocated": "5000000000000000000000",
+    "totalSykPending": "4750000000000000000000",
+    "positions": [
+      {
+        "account": "0x1234567890abcdef1234567890abcdef12345678",
+        "duration": 2592000,
+        "xSykAmount": "2500000000000000000000",
+        "sykAmount": "2375000000000000000000",
+        "vestIndex": "0",
+        "blockTimestamp": 1704067200,
+        "transactionHash": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+      },
+      {
+        "account": "0x1234567890abcdef1234567890abcdef12345678",
+        "duration": 7776000,
+        "xSykAmount": "2500000000000000000000",
+        "sykAmount": "2375000000000000000000",
+        "vestIndex": "1",
+        "blockTimestamp": 1704153600,
+        "transactionHash": "0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba"
+      }
+    ]
+  }
+]
