@@ -1,0 +1,44 @@
+name: Dopex / Stryke API Plans
+description: >-
+  Dopex (now Stryke) does not publish tiered commercial API pricing or
+  subscription plans. The REST API (api.stryke.xyz) is a public, permissionless
+  interface that can be queried without registration or API keys for read
+  operations such as option market data, strike chains, and price quotes.
+  Write operations (purchasing options, providing liquidity, exercising options)
+  require signed on-chain transactions sent directly to Arbitrum or other
+  supported EVM chains; these incur standard network gas fees in ETH rather
+  than API subscription costs.
+plans:
+  - name: Public Free Access
+    description: >-
+      All read endpoints on api.stryke.xyz are publicly accessible without
+      authentication. No API key or account registration is required to
+      query option markets, strikes chains, purchase quotes, position data,
+      or xSYK vesting information. This matches the permissionless ethos
+      of the underlying Arbitrum-based smart contracts.
+    type: free
+    url: https://docs.stryke.xyz/developers/apis
+    authentication: none
+    features:
+      - GET /clamm/option-markets — option market statistics
+      - GET /v1.1/clamm/option-markets — multi-chain market statistics
+      - GET /clamm/strikes-chain — full strike chain for a given market and expiry
+      - GET /clamm/purchase/quote — estimated cost to purchase an option
+      - GET /clamm/purchase/positions — current user option positions
+      - GET /clamm/purchase/history — user option purchase history
+      - GET /clamm/exercise/prepare — calldata for exercising an option on-chain
+      - GET /clamm/exercise/history — exercise transaction history
+      - GET /clamm/deposit/prepare — calldata for depositing liquidity
+      - GET /clamm/deposit/positions — current LP positions
+      - GET /clamm/deposit/history — deposit transaction history
+      - GET /clamm/deposit/withdraw/history — withdrawal transaction history
+      - GET /xsyk/vest-positions/{account} — xSYK vesting and staking positions
+      - No registration required for read access
+      - Multi-chain support via chains query parameter (e.g., 42161 for Arbitrum)
+
+notes: >-
+  On-chain interactions (option purchases, exercises, LP deposits/withdrawals)
+  are permissionless smart contract calls on Arbitrum (chain ID 42161) and
+  other supported EVM chains. These require only a funded wallet and network
+  gas fees. The legacy DPX and rDPX staking model has been superseded by
+  xSYK staking following the Dopex-to-Stryke protocol evolution.

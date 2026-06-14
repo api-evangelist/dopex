@@ -1,0 +1,163 @@
+aid: dopex
+url: https://raw.githubusercontent.com/api-evangelist/dopex/refs/heads/main/apis.yml
+name: Dopex
+kind: Index
+description: >-
+  Dopex (Decentralized Options Exchange) is a DeFi protocol built on Arbitrum
+  that enables users to trade and write options through Single Staking Option
+  Vaults (SSOV). The protocol uses a dual-token model — DPX (governance and
+  fee accrual) and rDPX (rebate token) — and prices options on-chain using
+  the Black-Scholes formula with implied volatility sourced via Chainlink
+  adapters. SSOVs allow liquidity providers to lock collateral for monthly
+  epochs and sell call or put options at defined strike prices, earning
+  premiums plus base DeFi yield. Dopex has since evolved into Stryke (stryke.xyz),
+  which extends the model with Concentrated Liquidity AMM Options (CLAMM) and
+  cross-chain support via LayerZero and Chainlink CCIP. The REST API (api.stryke.xyz)
+  exposes endpoints for option market data, strike chains, LP position management,
+  trade history, and xSYK staking positions, supporting integrators building
+  on-chain options products and analytics on Arbitrum and other EVM chains.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - DeFi
+  - Decentralized Options
+  - SSOV
+  - Options Exchange
+  - Arbitrum
+  - DPX
+  - rDPX
+  - Staking
+  - Implied Volatility
+  - Black-Scholes
+  - Options Pricing
+  - CLAMM
+  - Cryptocurrency
+  - Web3
+  - EVM
+created: '2026-06-14'
+modified: '2026-06-14'
+specificationVersion: '0.19'
+x-source: public-apis/public-apis
+x-category: Cryptocurrency
+x-tier: 2
+x-type: company
+apis:
+  - aid: dopex:clamm-options-api
+    name: Dopex CLAMM Options Trading API
+    description: >-
+      REST API for interacting with Dopex's Concentrated Liquidity AMM Options
+      (CLAMM) markets. Provides endpoints to fetch option market statistics,
+      retrieve the full strikes chain for a given market and expiry, get
+      estimated purchase quotes, prepare on-chain transaction calldata for
+      buying and exercising options, and query per-user position and
+      transaction history. The base URL is https://api.stryke.xyz and
+      supports multi-chain queries via the chains query parameter accepting
+      comma-separated EVM chain IDs (e.g., 42161 for Arbitrum).
+    humanURL: https://docs.stryke.xyz/developers/apis
+    baseURL: https://api.stryke.xyz
+    tags:
+      - Options Trading
+      - CLAMM
+      - Option Markets
+      - Strikes Chain
+      - Arbitrum
+      - DeFi
+    properties:
+      - type: Documentation
+        url: https://docs.stryke.xyz/developers/apis
+      - type: Documentation
+        title: Legacy Dopex Documentation
+        url: https://docs.dopex.io
+      - type: TermsOfService
+        url: https://www.stryke.xyz/terms
+      - type: PrivacyPolicy
+        url: https://www.stryke.xyz/privacy
+      - type: StatusPage
+        url: https://www.stryke.xyz
+      - type: X
+        url: https://twitter.com/stryke_xyz
+      - type: Discord
+        url: https://discord.gg/stryke
+      - type: GitHub
+        url: https://github.com/stryke-xyz
+      - type: DefiLlama
+        url: https://defillama.com/protocol/dopex
+      - type: CoinGecko
+        url: https://www.coingecko.com/en/coins/dopex
+
+  - aid: dopex:lp-management-api
+    name: Dopex LP Management API
+    description: >-
+      REST API for liquidity providers participating in Dopex CLAMM vaults.
+      Exposes endpoints to prepare deposit transaction calldata, query current
+      LP positions for a given wallet address, retrieve deposit history, and
+      retrieve withdrawal history. Used by LPs to manage capital in option
+      liquidity pools and track earnings from option premium income on Arbitrum
+      and supported EVM chains.
+    humanURL: https://docs.stryke.xyz/developers/apis
+    baseURL: https://api.stryke.xyz
+    tags:
+      - Liquidity Provider
+      - LP Management
+      - Deposit
+      - Withdraw
+      - DeFi
+      - Arbitrum
+    properties:
+      - type: Documentation
+        url: https://docs.stryke.xyz/developers/apis
+      - type: GitHub
+        url: https://github.com/stryke-xyz
+
+  - aid: dopex:xsyk-staking-api
+    name: Dopex xSYK Staking Positions API
+    description: >-
+      REST API for querying xSYK (escrowed SYK) staking and vesting positions
+      for a given account address. Returns details of vested and staked xSYK
+      allocations including total allocation amounts and pending vest positions.
+      xSYK replaced the legacy DPX and rDPX token staking model following
+      Dopex's evolution into the Stryke protocol with the SYK token merger.
+    humanURL: https://docs.stryke.xyz/developers/apis/xsyk
+    baseURL: https://api.stryke.xyz
+    tags:
+      - Staking
+      - xSYK
+      - DPX
+      - Vesting
+      - Token
+      - DeFi
+    properties:
+      - type: Documentation
+        url: https://docs.stryke.xyz/developers/apis/xsyk
+      - type: GitHub
+        url: https://github.com/stryke-xyz
+
+common:
+  - type: Website
+    url: https://www.stryke.xyz
+  - type: Documentation
+    url: https://docs.stryke.xyz
+  - type: LegacyWebsite
+    url: https://www.dopex.io
+  - type: LegacyDocs
+    url: https://docs.dopex.io
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: GitHub
+    title: Legacy SDK (dopex-io/elvarg)
+    url: https://github.com/dopex-io/elvarg
+  - type: Blog
+    url: https://teamdopex.medium.com
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Plans
+    url: plans/plans.yml
+  - type: RateLimits
+    url: rate-limits/rate-limits.yml
+  - type: FinOps
+    url: finops/finops.yml
+  - type: Audits
+    url: https://docs.stryke.xyz/security-audits
+  - type: BugBounty
+    url: https://docs.stryke.xyz/bug-bounty

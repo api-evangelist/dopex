@@ -1,0 +1,52 @@
+name: Dopex / Stryke API Rate Limits
+description: >-
+  Dopex (now operating as Stryke at api.stryke.xyz) does not publish formal
+  rate limit policies for its public REST API. The API is a permissionless
+  public service consistent with the DeFi ethos of the underlying Arbitrum
+  protocol. No documented per-IP, per-account, or per-endpoint request caps
+  have been disclosed in the official documentation at docs.stryke.xyz.
+
+rateLimits:
+  - name: Public API (api.stryke.xyz)
+    description: >-
+      The api.stryke.xyz REST API endpoints are publicly accessible without
+      authentication. No formal rate limit is documented. As a free public
+      DeFi API, production integrators should implement defensive request
+      pacing and caching to avoid overwhelming shared infrastructure, since
+      undocumented throttling may be applied server-side.
+    url: https://docs.stryke.xyz/developers/apis
+    published: false
+    limit: undocumented
+    scope: per IP
+    recommendation: >-
+      Implement client-side request caching (e.g., 15–60 second TTL for
+      market data) and exponential backoff on 429 or 5xx responses.
+      For high-frequency production usage, consider indexing on-chain
+      events directly from Arbitrum RPC nodes.
+
+  - name: Underlying Arbitrum RPC
+    description: >-
+      On-chain interactions with Dopex/Stryke smart contracts go through
+      Arbitrum JSON-RPC nodes. Public endpoints (e.g., arb1.arbitrum.io/rpc)
+      are rate-limited at the node level. Production applications should
+      use a dedicated RPC provider such as Alchemy, Infura, or QuickNode
+      for reliable throughput.
+    network: Arbitrum One (chain ID 42161)
+    limit: varies by RPC provider
+    publicEndpoint: https://arb1.arbitrum.io/rpc
+    recommendation: Use a paid RPC provider for production workloads.
+
+recommendations:
+  - Cache market data responses on the client side; option market stats
+    and strikes chains do not change more frequently than once per block
+    (~250ms on Arbitrum).
+  - Use on-chain event subscriptions (e.g., via ethers.js or viem) as an
+    alternative to polling the REST API for position updates.
+  - For high-volume data needs, consider the Dopex/Stryke Dune Analytics
+    dashboard (https://dune.com/flim/Dopex) for historical data queries.
+
+references:
+  - title: Stryke Developer API Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - title: Arbitrum RPC Endpoints
+    url: https://docs.arbitrum.io/node-running/node-providers

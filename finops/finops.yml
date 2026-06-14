@@ -1,0 +1,93 @@
+name: Dopex / Stryke API FinOps
+description: >-
+  Dopex (now Stryke) operates a permissionless public REST API with no monetary
+  subscription costs. The primary costs for integrators and users are on-chain
+  gas fees for smart contract interactions on Arbitrum One and other supported
+  EVM networks. Protocol fees are charged as a percentage of option premiums
+  and are collected by the smart contracts.
+
+costs:
+  - name: REST API Access
+    description: >-
+      The api.stryke.xyz REST API is free to use for all read and
+      transaction-preparation endpoints. No API key purchase, subscription
+      fee, or credit card is required.
+    cost: 0.00
+    currency: USD
+    unit: month
+
+  - name: Arbitrum Gas Fees (Option Purchase)
+    description: >-
+      Purchasing an option on Dopex/Stryke requires an on-chain transaction
+      on Arbitrum One. Gas fees are denominated in ETH and reflect Arbitrum's
+      L2 fee model (L2 execution fee + L1 data fee). Arbitrum gas fees are
+      significantly cheaper than Ethereum mainnet, typically ranging from
+      $0.01 to $0.50 per transaction depending on network congestion.
+    cost: variable
+    currency: ETH
+    unit: transaction
+    estimate: $0.01 – $0.50 USD per transaction
+    network: Arbitrum One (chain ID 42161)
+
+  - name: Arbitrum Gas Fees (LP Deposit / Withdrawal)
+    description: >-
+      Depositing or withdrawing liquidity in CLAMM vaults requires on-chain
+      transactions. Costs are similar to option purchase transactions, subject
+      to Arbitrum's current gas pricing.
+    cost: variable
+    currency: ETH
+    unit: transaction
+    estimate: $0.01 – $0.50 USD per transaction
+    network: Arbitrum One (chain ID 42161)
+
+  - name: Protocol Option Premium Fee
+    description: >-
+      Dopex/Stryke charges a protocol fee on option premiums. The exact fee
+      percentage is not publicly disclosed in documentation and may vary by
+      market and epoch. Fees are deducted from option premium payments and
+      distributed to DPX/SYK stakers and the protocol treasury.
+    cost: variable
+    currency: USD
+    unit: per option premium
+    note: >-
+      Consult the deployed contract addresses and on-chain fee parameters
+      at docs.stryke.xyz/developers/deployed-addresses for current rates.
+
+  - name: Third-Party RPC Provider
+    description: >-
+      High-frequency integrations should use a paid Arbitrum RPC provider
+      rather than public endpoints. Example pricing from major providers.
+    cost: variable
+    currency: USD
+    unit: month
+    examples:
+      - provider: Alchemy
+        free_tier: 300 million compute units/month
+        paid_plans_from: $49/month
+        url: https://www.alchemy.com/pricing
+      - provider: Infura
+        free_tier: 100,000 requests/day
+        paid_plans_from: $50/month
+        url: https://infura.io/pricing
+      - provider: QuickNode
+        free_tier: 10 million API credits/month
+        paid_plans_from: $49/month
+        url: https://www.quicknode.com/pricing
+
+savingsTips:
+  - Cache option market data and strikes chain responses for 30–60 seconds
+    to reduce API call volume.
+  - Use Arbitrum Goerli or Arbitrum Sepolia testnets during development;
+    testnet ETH is free via faucets.
+  - Batch multiple contract reads using multicall (stryke-xyz/web3-multicall
+    or equivalent) to reduce the number of RPC calls and associated costs.
+  - Monitor gas prices using Arbitrum's gas tracker before submitting
+    transactions to avoid peak-congestion surcharges.
+
+references:
+  - title: Stryke Developer Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - title: Arbitrum Gas Overview
+    url: https://docs.arbitrum.io/arbos/gas
+  - title: Deployed Contract Addresses
+    url: https://docs.stryke.xyz/developers/deployed-addresses
