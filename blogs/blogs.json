@@ -1,0 +1,11 @@
+{
+  "repo": "dopex",
+  "feeds": [
+    {
+      "source": "https://github.com/dopex-io/elvarg",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
+}
