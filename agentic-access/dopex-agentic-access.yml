@@ -1,0 +1,214 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/stryke-api.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 20
+  by_action_class:
+    connected: 20
+  by_consequence:
+    read: 20
+  human_in_the_loop_required: 0
+operations:
+- path: /clamm/purchase/quote
+  method: get
+  operationId: PurchaseController_getQuote
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/purchase/positions
+  method: get
+  operationId: PurchaseController_getPurchasePositions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/purchase/history
+  method: get
+  operationId: PurchaseController_getHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/deposit/prepare
+  method: get
+  operationId: DepositController_prepareDeposit
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/deposit/history
+  method: get
+  operationId: DepositController_getHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/deposit/positions
+  method: get
+  operationId: DepositController_getPositions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/withdraw/history
+  method: get
+  operationId: WithdrawController_getHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/exercise/prepare
+  method: get
+  operationId: ExerciseController_getExerciseTx
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/exercise/history
+  method: get
+  operationId: ExerciseController_getHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/strikes-chain
+  method: get
+  operationId: StrikesChainController_getStrikesChain
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/option-markets
+  method: get
+  operationId: OptionMarketsController_getOptionMarkets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1.1/clamm/option-markets
+  method: get
+  operationId: OptionMarketsController_getOptionMarketsV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/fees
+  method: get
+  operationId: StatsController_getFees
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/volume
+  method: get
+  operationId: StatsController_getVolume
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/dau
+  method: get
+  operationId: StatsController_getDau
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/open-interest
+  method: get
+  operationId: StatsController_getOpenInterest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/tvl
+  method: get
+  operationId: StatsController_getTvl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/tvl/{pool}
+  method: get
+  operationId: StatsController_getTvlForPool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clamm/stats/delta
+  method: get
+  operationId: StatsController_getPnlDelta
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /xsyk/vest-positions/{account}
+  method: get
+  operationId: VestPositionsController_getUserData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

@@ -134,6 +134,8 @@ apis:
         url: https://github.com/stryke-xyz
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/dopex-agentic-access.yml
   - type: DomainSecurity
     url: security/dopex-domain-security.yml
   - type: Website
