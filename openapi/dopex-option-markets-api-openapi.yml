@@ -1,0 +1,219 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit option-markets API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: option-markets
+paths:
+  /clamm/option-markets:
+    get:
+      operationId: OptionMarketsController_getOptionMarkets
+      summary: Get option markets on a chain
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      responses:
+        '200':
+          description: List of option markets on specified chain
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionMarketsResponseDtoV1'
+      tags:
+      - option-markets
+  /v1.1/clamm/option-markets:
+    get:
+      operationId: OptionMarketsController_getOptionMarketsV2
+      summary: Get option markets on chains specified
+      parameters:
+      - name: chains
+        required: true
+        in: query
+        description: Chain IDs of networks to query option markets for
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: List of option markets on specified chain
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionMarketsResponseDtoV2'
+      tags:
+      - option-markets
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    OptionMarketsResponseDtoV1:
+      type: object
+      properties:
+        deprecated:
+          type: boolean
+          readOnly: true
+        address:
+          type: string
+          readOnly: true
+        callToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        putToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        primePool:
+          type: string
+          readOnly: true
+        dpFee:
+          type: string
+          readOnly: true
+        optionsPricing:
+          type: string
+          readOnly: true
+        tokenURIFetcher:
+          type: string
+          readOnly: true
+        totalPremium:
+          type: string
+          readOnly: true
+        totalVolume:
+          type: string
+          readOnly: true
+        totalFees:
+          type: string
+          readOnly: true
+        pairName:
+          type: string
+          readOnly: true
+        ticker:
+          type: string
+          readOnly: true
+      required:
+      - deprecated
+      - address
+      - callToken
+      - putToken
+      - primePool
+      - dpFee
+      - optionsPricing
+      - tokenURIFetcher
+      - totalPremium
+      - totalVolume
+      - totalFees
+      - pairName
+      - ticker
+    OptionMarketsResponseDtoV2:
+      type: object
+      properties:
+        deprecated:
+          type: boolean
+          readOnly: true
+        address:
+          type: string
+          readOnly: true
+        callToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        putToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        primePool:
+          type: string
+          readOnly: true
+        optionsPricing:
+          type: string
+          readOnly: true
+        tokenURIFetcher:
+          type: string
+          readOnly: true
+        pairName:
+          type: string
+          readOnly: true
+        ticker:
+          type: string
+          readOnly: true
+        chainId:
+          type: number
+          readOnly: true
+        pools:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/OptionMarketsResponseDtoV2__Pools'
+        feeStrategy:
+          type: object
+          readOnly: true
+        premiums24h:
+          type: number
+          readOnly: true
+        volume24h:
+          type: number
+          readOnly: true
+        protocolFees24h:
+          type: number
+          readOnly: true
+        totalLiquidity:
+          type: number
+          readOnly: true
+        availableLiquidity:
+          type: number
+          readOnly: true
+        openInterest:
+          type: number
+          readOnly: true
+      required:
+      - deprecated
+      - address
+      - callToken
+      - putToken
+      - primePool
+      - optionsPricing
+      - tokenURIFetcher
+      - pairName
+      - ticker
+      - chainId
+      - pools
+      - feeStrategy
+      - premiums24h
+      - volume24h
+      - protocolFees24h
+      - totalLiquidity
+      - availableLiquidity
+      - openInterest
+    OptionMarketsResponseDtoV2__Pools:
+      type: object
+      properties: {}

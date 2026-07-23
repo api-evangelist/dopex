@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit withdraw API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: withdraw
+paths:
+  /clamm/withdraw/history:
+    get:
+      operationId: WithdrawController_getHistory
+      summary: Get history of withdraws from CLAMM for a user
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      - name: pool
+        required: true
+        in: query
+        description: Address of the token pair pool
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WithdrawHistoryResponseDto'
+        '400':
+          description: Failed to fetch withdraw history
+      tags:
+      - withdraw
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    Strikes:
+      type: object
+      properties:
+        call:
+          type: number
+          description: Call strike
+        put:
+          type: number
+          description: Put strike
+      required:
+      - call
+      - put
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    Token0Token1:
+      type: object
+      properties:
+        token0:
+          description: Token0 details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        token1:
+          description: Token1 token details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - token0
+      - token1
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
+          type: string
+          description: Amount of token0 provided as liquidity
+        amount1:
+          type: string
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1
+    WithdrawHistoryResponseDto:
+      type: object
+      properties:
+        liquidity:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/LiquidityToken0Token1'
+        timestamp:
+          type: number
+          readOnly: true
+        strikes:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Strikes'
+        txHash:
+          type: string
+          readOnly: true
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1'
+        handler:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/HandlerMeta'
+      required:
+      - liquidity
+      - timestamp
+      - strikes
+      - txHash
+      - tokens
+      - handler

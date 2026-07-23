@@ -1,0 +1,225 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit exercise API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: exercise
+paths:
+  /clamm/exercise/prepare:
+    get:
+      operationId: ExerciseController_getExerciseTx
+      summary: Get information required to exercise an options position
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: optionId
+        required: true
+        in: query
+        description: ERC721 token ID of the options position
+        schema:
+          type: number
+      - name: swapperId
+        required: true
+        in: query
+        description: Swapper contract to route exercise swap through
+        schema:
+          enum:
+          - 1inch
+          - uni-v3
+          type: string
+      - name: slippage
+        required: true
+        in: query
+        description: Max slippage allowance for the swap that takes place when options' position collateral tokens are swapped to the profit token
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareExerciseResponseDto'
+      tags:
+      - exercise
+  /clamm/exercise/history:
+    get:
+      operationId: ExerciseController_getHistory
+      summary: Get history of exercise activity for a user
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseHistoryResponseDto'
+      tags:
+      - exercise
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    ExerciseHistoryResponseDto:
+      type: object
+      properties:
+        strike:
+          type: number
+          readOnly: true
+        exercisePrice:
+          type: number
+          readOnly: true
+        premium:
+          type: string
+          readOnly: true
+        timestamp:
+          type: string
+          readOnly: true
+        ttl:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        profit:
+          type: string
+          readOnly: true
+        size:
+          type: string
+          readOnly: true
+        sizeToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        profitToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        txHash:
+          type: string
+          readOnly: true
+      required:
+      - strike
+      - exercisePrice
+      - premium
+      - timestamp
+      - ttl
+      - type
+      - profit
+      - size
+      - sizeToken
+      - profitToken
+      - txHash
+    TransactionData:
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address to send the transaction calldata to
+        data:
+          type: string
+          description: Transaction calldata
+      required:
+      - to
+      - data
+    PrepareExerciseResponseDto:
+      type: object
+      properties:
+        profit:
+          type: string
+          readOnly: true
+        token:
+          type: string
+          readOnly: true
+        swapData:
+          readOnly: true
+          type: array
+          items:
+            type: string
+        swappers:
+          readOnly: true
+          type: array
+          items:
+            type: string
+        tx:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TransactionData'
+      required:
+      - profit
+      - token
+      - swapData
+      - swappers
+      - tx

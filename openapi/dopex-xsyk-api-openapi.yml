@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit xSYK API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: xSYK
+paths:
+  /xsyk/vest-positions/{account}:
+    get:
+      operationId: VestPositionsController_getUserData
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: account
+        required: true
+        in: path
+        description: Address of user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserXSykDataResponseDto'
+      tags:
+      - xSYK
+components:
+  schemas:
+    VestPositionsResponseDto:
+      type: object
+      properties:
+        account:
+          type: string
+          readOnly: true
+        duration:
+          type: number
+          readOnly: true
+        xSykAmount:
+          type: string
+          readOnly: true
+        sykAmount:
+          type: string
+          readOnly: true
+        vestIndex:
+          type: string
+          readOnly: true
+        blockTimestamp:
+          type: number
+          readOnly: true
+        transactionHash:
+          type: string
+          readOnly: true
+      required:
+      - account
+      - duration
+      - xSykAmount
+      - sykAmount
+      - vestIndex
+      - blockTimestamp
+      - transactionHash
+    UserXSykDataResponseDto:
+      type: object
+      properties:
+        totalXSykAllocated:
+          type: string
+          readOnly: true
+        totalSykPending:
+          type: string
+          readOnly: true
+        positions:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/VestPositionsResponseDto'
+      required:
+      - totalXSykAllocated
+      - totalSykPending
+      - positions

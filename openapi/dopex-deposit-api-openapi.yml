@@ -1,0 +1,436 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: deposit
+paths:
+  /clamm/deposit/prepare:
+    get:
+      operationId: DepositController_prepareDeposit
+      summary: Prepare a executable transaction and a summary for providing liquidity into CLAMM
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: pool
+        required: true
+        in: query
+        description: Address of the token pair pool
+        schema:
+          type: string
+      - name: hook
+        required: true
+        in: query
+        description: Address of the hook to deposit through
+        schema:
+          type: string
+      - name: handler
+        required: true
+        in: query
+        description: Address of the handler to deposit through
+        schema:
+          type: string
+      - name: maxStrike
+        required: true
+        in: query
+        description: Range max strike price
+        schema:
+          type: number
+      - name: minStrike
+        required: true
+        in: query
+        description: Range min strike price
+        schema:
+          type: number
+      - name: optionsAmount
+        required: true
+        in: query
+        description: Amount of options to provide liquidity for.
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareDepositResponseDto'
+      tags:
+      - deposit
+  /clamm/deposit/history:
+    get:
+      operationId: DepositController_getHistory
+      summary: Get history of deposit activity
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      - name: pool
+        required: true
+        in: query
+        description: Address of the token pair pool
+        schema:
+          type: string
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepositHistoryResponseDto'
+      tags:
+      - deposit
+  /clamm/deposit/positions:
+    get:
+      operationId: DepositController_getPositions
+      summary: Get current deposit positions
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      - name: pool
+        required: true
+        in: query
+        description: Address of the token pair pool
+        schema:
+          type: string
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepositPositionsResponseDto'
+      tags:
+      - deposit
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    DepositResponseDto__ReservedWithdrawable:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+        liquidity:
+          type: string
+          readOnly: true
+      required:
+      - token0
+      - token1
+      - liquidity
+    Strikes:
+      type: object
+      properties:
+        call:
+          type: number
+          description: Call strike
+        put:
+          type: number
+          description: Put strike
+      required:
+      - call
+      - put
+    TransactionData:
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address to send the transaction calldata to
+        data:
+          type: string
+          description: Transaction calldata
+      required:
+      - to
+      - data
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    DepositHistoryResponseDto:
+      type: object
+      properties:
+        strikes:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Strikes'
+        txHash:
+          type: string
+          readOnly: true
+        timestamp:
+          type: number
+          readOnly: true
+        liquidity:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/LiquidityToken0Token1'
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1'
+        handler:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/HandlerMeta'
+      required:
+      - strikes
+      - txHash
+      - timestamp
+      - liquidity
+      - tokens
+      - handler
+    Token0Token1:
+      type: object
+      properties:
+        token0:
+          description: Token0 details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        token1:
+          description: Token1 token details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - token0
+      - token1
+    PrepareDepositResponseDto:
+      type: object
+      properties:
+        tx:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TransactionData'
+        strikes:
+          readOnly: true
+          type: array
+          items:
+            type: number
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PrepareDepositResponseDto__Tokens'
+      required:
+      - tx
+      - strikes
+      - tokens
+    PrepareDepositResponseDto__Tokens:
+      type: object
+      properties:
+        callToken:
+          description: Call token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+        putToken:
+          description: Put token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+      required:
+      - callToken
+      - putToken
+    DepositPositionsResponseDto:
+      type: object
+      properties:
+        strikes:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Strikes'
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1'
+        earned:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1Composition'
+        liquidity:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1Composition'
+        withdrawable:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1Composition'
+        reserved:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DepositResponseDto__Reserved'
+      required:
+      - strikes
+      - tokens
+      - earned
+      - liquidity
+      - withdrawable
+      - reserved
+    Token0Token1Composition:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+      required:
+      - token0
+      - token1
+    IntersectionAmountTokenDto:
+      type: object
+      properties:
+        amount:
+          type: string
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - amount
+      - address
+      - decimals
+      - symbol
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
+          type: string
+          description: Amount of token0 provided as liquidity
+        amount1:
+          type: string
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1
+    DepositResponseDto__Reserved:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+        withdrawable:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DepositResponseDto__ReservedWithdrawable'
+        lastReserve:
+          type: number
+          readOnly: true
+      required:
+      - token0
+      - token1
+      - withdrawable
+      - lastReserve

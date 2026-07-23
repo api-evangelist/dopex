@@ -1,0 +1,339 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit purchase API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: purchase
+paths:
+  /clamm/purchase/quote:
+    get:
+      operationId: PurchaseController_getQuote
+      summary: Get quote for purchasing options
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: user
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: strike
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: markPrice
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: type
+        required: true
+        in: query
+        schema:
+          enum:
+          - call
+          - put
+          type: string
+      - name: amount
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: ttl
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Get cost of purchasing an option
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponseDto'
+      tags:
+      - purchase
+  /clamm/purchase/positions:
+    get:
+      operationId: PurchaseController_getPurchasePositions
+      summary: Get current options positions of a user
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      responses:
+        '200':
+          description: List of options positions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchasePositionsResponseDto'
+      tags:
+      - purchase
+  /clamm/purchase/history:
+    get:
+      operationId: PurchaseController_getHistory
+      summary: Get history of options purchases for a user
+      parameters:
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: user
+        required: true
+        in: query
+        description: Address of the user
+        schema:
+          type: string
+      - name: first
+        required: true
+        in: query
+        description: Pagination parameter for first (Similar to Qraphql)
+        schema:
+          enum:
+          - 100
+          - 200
+          - 300
+          type: number
+      - name: skip
+        required: true
+        in: query
+        description: Pagination parameter for skip (Similar to Qraphql)
+        schema:
+          enum:
+          - 0
+          - 100
+          - 200
+          type: number
+      responses:
+        '200':
+          description: History of options purchases by an address
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseHistoryResponseDto'
+      tags:
+      - purchase
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    QuoteResponseDto:
+      type: object
+      properties:
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        premium:
+          type: string
+          readOnly: true
+        fees:
+          type: string
+          readOnly: true
+      required:
+      - token
+      - premium
+      - fees
+    PurchaseHistoryResponseDto:
+      type: object
+      properties:
+        txHash:
+          type: object
+          readOnly: true
+        timestamp:
+          type: number
+          readOnly: true
+        strike:
+          type: number
+          readOnly: true
+        size:
+          type: string
+          readOnly: true
+        ttl:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - call
+          - put
+        premium:
+          type: string
+          readOnly: true
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - txHash
+      - timestamp
+      - strike
+      - size
+      - ttl
+      - type
+      - premium
+      - token
+    PurchasePositionMetaHandlerDto:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        deprecated:
+          type: boolean
+          readOnly: true
+        handler:
+          type: object
+          readOnly: true
+        pool:
+          type: object
+          readOnly: true
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    PurchasePositionsResponseDto:
+      type: object
+      properties:
+        size:
+          type: string
+          readOnly: true
+        premium:
+          type: string
+          readOnly: true
+        strike:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - call
+          - put
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        meta:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PurchasePositionMetaDto'
+      required:
+      - size
+      - premium
+      - strike
+      - type
+      - token
+      - meta
+    PurchasePositionMetaDto:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          readOnly: true
+        expiry:
+          type: number
+          readOnly: true
+        handlers:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
+        liquidities:
+          readOnly: true
+          type: array
+          items:
+            type: string
+      required:
+      - tokenId
+      - expiry
+      - handlers
+      - liquidities

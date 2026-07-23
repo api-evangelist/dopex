@@ -1,0 +1,168 @@
+openapi: 3.0.0
+info:
+  title: Stryke deposit strikes-chain API
+  description: ''
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.stryke.xyz
+tags:
+- name: strikes-chain
+paths:
+  /clamm/strikes-chain:
+    get:
+      operationId: StrikesChainController_getStrikesChain
+      summary: Get strikes chain or options chain of a options market
+      parameters:
+      - name: optionMarket
+        required: true
+        in: query
+        description: Address of the option market
+        schema:
+          type: string
+      - name: chainId
+        required: true
+        in: query
+        description: Chain ID of the network
+        schema:
+          enum:
+          - 5000
+          - 42161
+          type: number
+      - name: callsReach
+        required: true
+        in: query
+        schema:
+          enum:
+          - 100
+          - 200
+          type: number
+      - name: putsReach
+        required: true
+        in: query
+        schema:
+          enum:
+          - 100
+          - 200
+          type: number
+      responses:
+        '200':
+          description: List of strikes of the option market
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StrikesChainResponseDto'
+      tags:
+      - strikes-chain
+components:
+  schemas:
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    StrikesChainDto:
+      type: object
+      properties:
+        totalLiquidity:
+          type: string
+          readOnly: true
+        availableLiquidity:
+          type: string
+          readOnly: true
+        utilization:
+          type: string
+          readOnly: true
+        apr:
+          type: string
+          readOnly: true
+        handler:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/HandlerMeta'
+        meta:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/StrikesChainMetaDto'
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - totalLiquidity
+      - availableLiquidity
+      - utilization
+      - apr
+      - handler
+      - meta
+      - token
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    StrikesChainResponseDto:
+      type: object
+      properties:
+        <strike price>:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/StrikesChainDto'
+      required:
+      - <strike price>
+    StrikesChainMetaDto:
+      type: object
+      properties:
+        hook:
+          type: string
+          readOnly: true
+        tickLower:
+          type: number
+          readOnly: true
+        tickUpper:
+          type: number
+          readOnly: true
+        totalTokenLiquidity:
+          type: string
+          readOnly: true
+        availableTokenLiquidity:
+          type: string
+          readOnly: true
+        totalLiquidity:
+          type: string
+          readOnly: true
+        availableLiquidity:
+          type: string
+          readOnly: true
+      required:
+      - hook
+      - tickLower
+      - tickUpper
+      - totalTokenLiquidity
+      - availableTokenLiquidity
+      - totalLiquidity
+      - availableLiquidity
