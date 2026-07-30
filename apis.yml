@@ -16,7 +16,19 @@ description: >-
   exposes endpoints for option market data, strike chains, LP position management,
   trade history, and xSYK staking positions, supporting integrators building
   on-chain options products and analytics on Arbitrum and other EVM chains.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Free · Open access
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dopex.png
 tags:
   - DeFi
   - Decentralized Options
@@ -41,98 +53,288 @@ x-category: Cryptocurrency
 x-tier: 2
 x-type: company
 apis:
-  - aid: dopex:clamm-options-api
-    name: Dopex CLAMM Options Trading API
-    description: >-
-      REST API for interacting with Dopex's Concentrated Liquidity AMM Options
-      (CLAMM) markets. Provides endpoints to fetch option market statistics,
-      retrieve the full strikes chain for a given market and expiry, get
-      estimated purchase quotes, prepare on-chain transaction calldata for
-      buying and exercising options, and query per-user position and
-      transaction history. The base URL is https://api.stryke.xyz and
-      supports multi-chain queries via the chains query parameter accepting
-      comma-separated EVM chain IDs (e.g., 42161 for Arbitrum).
-    humanURL: https://docs.stryke.xyz/developers/apis
-    baseURL: https://api.stryke.xyz
-    tags:
-      - Options Trading
-      - CLAMM
-      - Option Markets
-      - Strikes Chain
-      - Arbitrum
-      - DeFi
-    properties:
-      - type: Documentation
-        url: https://docs.stryke.xyz/developers/apis
-      - type: Documentation
-        title: Legacy Dopex Documentation
-        url: https://docs.dopex.io
-      - type: TermsOfService
-        url: https://www.stryke.xyz/terms
-      - type: PrivacyPolicy
-        url: https://www.stryke.xyz/privacy
-      - type: StatusPage
-        url: https://www.stryke.xyz
-      - type: X
-        url: https://twitter.com/stryke_xyz
-      - type: Discord
-        url: https://discord.gg/stryke
-      - type: GitHub
-        url: https://github.com/stryke-xyz
-      - type: DefiLlama
-        url: https://defillama.com/protocol/dopex
-      - type: CoinGecko
-        url: https://www.coingecko.com/en/coins/dopex
-      - type: OpenAPI
-        url: openapi/stryke-api.yaml
-
-  - aid: dopex:lp-management-api
-    name: Dopex LP Management API
-    description: >-
-      REST API for liquidity providers participating in Dopex CLAMM vaults.
-      Exposes endpoints to prepare deposit transaction calldata, query current
-      LP positions for a given wallet address, retrieve deposit history, and
-      retrieve withdrawal history. Used by LPs to manage capital in option
-      liquidity pools and track earnings from option premium income on Arbitrum
-      and supported EVM chains.
-    humanURL: https://docs.stryke.xyz/developers/apis
-    baseURL: https://api.stryke.xyz
-    tags:
-      - Liquidity Provider
-      - LP Management
-      - Deposit
-      - Withdraw
-      - DeFi
-      - Arbitrum
-    properties:
-      - type: Documentation
-        url: https://docs.stryke.xyz/developers/apis
-      - type: GitHub
-        url: https://github.com/stryke-xyz
-
-  - aid: dopex:xsyk-staking-api
-    name: Dopex xSYK Staking Positions API
-    description: >-
-      REST API for querying xSYK (escrowed SYK) staking and vesting positions
-      for a given account address. Returns details of vested and staked xSYK
-      allocations including total allocation amounts and pending vest positions.
-      xSYK replaced the legacy DPX and rDPX token staking model following
-      Dopex's evolution into the Stryke protocol with the SYK token merger.
-    humanURL: https://docs.stryke.xyz/developers/apis/xsyk
-    baseURL: https://api.stryke.xyz
-    tags:
-      - Staking
-      - xSYK
-      - DPX
-      - Vesting
-      - Token
-      - DeFi
-    properties:
-      - type: Documentation
-        url: https://docs.stryke.xyz/developers/apis/xsyk
-      - type: GitHub
-        url: https://github.com/stryke-xyz
-
+- aid: dopex:lp-management-api
+  name: Dopex LP Management API
+  description: >-
+    REST API for liquidity providers participating in Dopex CLAMM vaults. Exposes endpoints to prepare
+    deposit transaction calldata, query current LP positions for a given wallet address, retrieve deposit
+    history, and retrieve withdrawal history. Used by LPs to manage capital in option liquidity pools
+    and track earnings from option premium income on Arbitrum and supported EVM chains.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - Liquidity Provider
+  - LP Management
+  - Deposit
+  - Withdraw
+  - DeFi
+  - Arbitrum
+  properties:
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+- aid: dopex:xsyk-staking-api
+  name: Dopex xSYK Staking Positions API
+  description: >-
+    REST API for querying xSYK (escrowed SYK) staking and vesting positions for a given account address.
+    Returns details of vested and staked xSYK allocations including total allocation amounts and pending
+    vest positions. xSYK replaced the legacy DPX and rDPX token staking model following Dopex's evolution
+    into the Stryke protocol with the SYK token merger.
+  humanURL: https://docs.stryke.xyz/developers/apis/xsyk
+  baseURL: https://api.stryke.xyz
+  tags:
+  - Staking
+  - xSYK
+  - DPX
+  - Vesting
+  - Token
+  - DeFi
+  properties:
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis/xsyk
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+- aid: dopex:dopex-deposit-api
+  name: Dopex deposit API
+  description: The deposit API from Dopex — 3 operation(s) for deposit.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - deposit
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-deposit-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-exercise-api
+  name: Dopex exercise API
+  description: The exercise API from Dopex — 2 operation(s) for exercise.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - exercise
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-exercise-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-option-markets-api
+  name: Dopex option-markets API
+  description: The option-markets API from Dopex — 2 operation(s) for option-markets.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - option-markets
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-option-markets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-purchase-api
+  name: Dopex purchase API
+  description: The purchase API from Dopex — 3 operation(s) for purchase.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - purchase
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-purchase-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-stats-api
+  name: Dopex stats API
+  description: The stats API from Dopex — 7 operation(s) for stats.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - stats
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-strikes-chain-api
+  name: Dopex strikes-chain API
+  description: The strikes-chain API from Dopex — 1 operation(s) for strikes-chain.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - strikes-chain
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-strikes-chain-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-withdraw-api
+  name: Dopex withdraw API
+  description: The withdraw API from Dopex — 1 operation(s) for withdraw.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - withdraw
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-withdraw-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
+- aid: dopex:dopex-xsyk-api
+  name: Dopex xSYK API
+  description: The xSYK API from Dopex — 1 operation(s) for xsyk.
+  humanURL: https://docs.stryke.xyz/developers/apis
+  baseURL: https://api.stryke.xyz
+  tags:
+  - xSYK
+  properties:
+  - type: OpenAPI
+    url: openapi/dopex-xsyk-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stryke.xyz/developers/apis
+  - type: Documentation
+    url: https://docs.dopex.io
+  - type: TermsOfService
+    url: https://www.stryke.xyz/terms
+  - type: PrivacyPolicy
+    url: https://www.stryke.xyz/privacy
+  - type: StatusPage
+    url: https://www.stryke.xyz
+  - type: X
+    url: https://twitter.com/stryke_xyz
+  - type: Discord
+    url: https://discord.gg/stryke
+  - type: GitHub
+    url: https://github.com/stryke-xyz
+  - type: DefiLlama
+    url: https://defillama.com/protocol/dopex
+  - type: CoinGecko
+    url: https://www.coingecko.com/en/coins/dopex
 common:
   - type: AgenticAccess
     url: agentic-access/dopex-agentic-access.yml
