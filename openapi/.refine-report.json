@@ -1,0 +1,28 @@
+{
+  "provider": "dopex",
+  "sources": [
+    "dopex-deposit-api-openapi.yml",
+    "dopex-exercise-api-openapi.yml",
+    "dopex-option-markets-api-openapi.yml",
+    "dopex-purchase-api-openapi.yml",
+    "dopex-stats-api-openapi.yml",
+    "dopex-strikes-chain-api-openapi.yml",
+    "dopex-withdraw-api-openapi.yml",
+    "dopex-xsyk-api-openapi.yml"
+  ],
+  "outputs": [
+    "dopex-deposit-api-openapi.yml",
+    "dopex-exercise-api-openapi.yml",
+    "dopex-option-markets-api-openapi.yml",
+    "dopex-purchase-api-openapi.yml",
+    "dopex-stats-api-openapi.yml",
+    "dopex-strikes-chain-api-openapi.yml",
+    "dopex-withdraw-api-openapi.yml",
+    "dopex-xsyk-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
