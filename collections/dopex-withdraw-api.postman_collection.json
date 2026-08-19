@@ -1,0 +1,206 @@
+{
+  "item": [
+    {
+      "id": "549a862a-046b-444c-b49f-3e4e97ede358",
+      "name": "withdraw",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9a7bc99-4f8b-4c0f-9c3b-22af2d0ece9b",
+          "name": "Get history of withdraws from CLAMM for a user",
+          "request": {
+            "name": "Get history of withdraws from CLAMM for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "withdraw",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool",
+                  "value": "<string>",
+                  "description": "(Required) Address of the token pair pool"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e52a7f8c-4e09-4bbe-8b5f-2a637d5e3860",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "withdraw",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pool",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"liquidity\": {\n      \"amount0\": \"string\",\n      \"amount1\": \"string\"\n    },\n    \"timestamp\": 9157.304260732926,\n    \"strikes\": {\n      \"call\": 1850.0930323829812,\n      \"put\": 2710.819139307742\n    },\n    \"txHash\": \"string\",\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"handler\": {\n      \"name\": \"string\",\n      \"deprecated\": false,\n      \"handler\": {},\n      \"pool\": \"string\"\n    }\n  },\n  {\n    \"liquidity\": {\n      \"amount0\": \"string\",\n      \"amount1\": \"string\"\n    },\n    \"timestamp\": 8529.719338074938,\n    \"strikes\": {\n      \"call\": 7107.704616360265,\n      \"put\": 5384.182250906217\n    },\n    \"txHash\": \"string\",\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"handler\": {\n      \"name\": \"string\",\n      \"deprecated\": false,\n      \"handler\": {},\n      \"pool\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5101b770-f9cd-424a-ad09-9267339ae612",
+              "name": "Failed to fetch withdraw history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "withdraw",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pool",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fffe8c07-9cc6-4d30-b268-0e1de8337bf1",
+    "name": "Stryke deposit withdraw API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

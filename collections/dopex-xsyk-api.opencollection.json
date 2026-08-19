@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit xSYK API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "xSYK",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "VestPositionsController_getUserData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/xsyk/vest-positions/:account",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "account",
+                "value": "",
+                "type": "path",
+                "description": "Address of user"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

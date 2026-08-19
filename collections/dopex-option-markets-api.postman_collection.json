@@ -1,0 +1,206 @@
+{
+  "item": [
+    {
+      "id": "4517d13c-f844-4a79-9426-136898f6bbf3",
+      "name": "option-markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5e5c7ce-de2d-49c7-8a3b-a54487de5c95",
+          "name": "Get option markets on a chain",
+          "request": {
+            "name": "Get option markets on a chain",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "option-markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fabaca9-810c-4030-b73e-268a9b333ad9",
+              "name": "List of option markets on specified chain",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "option-markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"deprecated\": true,\n    \"address\": \"string\",\n    \"callToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"putToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"primePool\": \"string\",\n    \"dpFee\": \"string\",\n    \"optionsPricing\": \"string\",\n    \"tokenURIFetcher\": \"string\",\n    \"totalPremium\": \"string\",\n    \"totalVolume\": \"string\",\n    \"totalFees\": \"string\",\n    \"pairName\": \"string\",\n    \"ticker\": \"string\"\n  },\n  {\n    \"deprecated\": true,\n    \"address\": \"string\",\n    \"callToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"putToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"primePool\": \"string\",\n    \"dpFee\": \"string\",\n    \"optionsPricing\": \"string\",\n    \"tokenURIFetcher\": \"string\",\n    \"totalPremium\": \"string\",\n    \"totalVolume\": \"string\",\n    \"totalFees\": \"string\",\n    \"pairName\": \"string\",\n    \"ticker\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf9417df-2731-4850-8e78-0ced28ef2e03",
+          "name": "Get option markets on chains specified",
+          "request": {
+            "name": "Get option markets on chains specified",
+            "description": {},
+            "url": {
+              "path": [
+                "v1.1",
+                "clamm",
+                "option-markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "(Required) Chain IDs of networks to query option markets for"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "(Required) Chain IDs of networks to query option markets for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b4285ed-10f8-4f80-b235-235da200a976",
+              "name": "List of option markets on specified chain",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "clamm",
+                    "option-markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"deprecated\": true,\n    \"address\": \"string\",\n    \"callToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"putToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"primePool\": \"string\",\n    \"optionsPricing\": \"string\",\n    \"tokenURIFetcher\": \"string\",\n    \"pairName\": \"string\",\n    \"ticker\": \"string\",\n    \"chainId\": 1769.4927419594853,\n    \"pools\": [],\n    \"feeStrategy\": {},\n    \"premiums24h\": 6170.990873602823,\n    \"volume24h\": 7881.279822810846,\n    \"protocolFees24h\": 4155.2436064220665,\n    \"totalLiquidity\": 1578.15306498137,\n    \"availableLiquidity\": 7106.136904174394,\n    \"openInterest\": 7321.507296096161\n  },\n  {\n    \"deprecated\": false,\n    \"address\": \"string\",\n    \"callToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"putToken\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"primePool\": \"string\",\n    \"optionsPricing\": \"string\",\n    \"tokenURIFetcher\": \"string\",\n    \"pairName\": \"string\",\n    \"ticker\": \"string\",\n    \"chainId\": 1315.3475641637424,\n    \"pools\": [],\n    \"feeStrategy\": {},\n    \"premiums24h\": 4318.7814599005005,\n    \"volume24h\": 705.1756810317355,\n    \"protocolFees24h\": 9303.19403023706,\n    \"totalLiquidity\": 8070.378021892908,\n    \"availableLiquidity\": 5791.818967600984,\n    \"openInterest\": 1515.84414305434\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "84465b82-6c1d-4259-8065-955ccd8e5341",
+    "name": "Stryke deposit option-markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

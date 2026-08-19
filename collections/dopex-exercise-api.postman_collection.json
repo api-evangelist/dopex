@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "5b4ac68c-2129-4f8b-88b0-b60d44d3b2ef",
+      "name": "exercise",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7caf8a0-f379-464a-a327-23e83affafd4",
+          "name": "Get information required to exercise an options position",
+          "request": {
+            "name": "Get information required to exercise an options position",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "exercise",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionId",
+                  "value": "<number>",
+                  "description": "(Required) ERC721 token ID of the options position"
+                },
+                {
+                  "disabled": false,
+                  "key": "swapperId",
+                  "value": "<string>",
+                  "description": "(Required) Swapper contract to route exercise swap through"
+                },
+                {
+                  "disabled": false,
+                  "key": "slippage",
+                  "value": "<number>",
+                  "description": "(Required) Max slippage allowance for the swap that takes place when options' position collateral tokens are swapped to the profit token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cd44a28-3243-498a-a663-1cedc2458409",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "exercise",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "optionId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "swapperId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profit\": \"string\",\n  \"token\": \"string\",\n  \"swapData\": [\n    \"string\",\n    \"string\"\n  ],\n  \"swappers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tx\": {\n    \"to\": \"string\",\n    \"data\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "365c9670-e7ff-41ce-85d2-c0fbfc5fc715",
+          "name": "Get history of exercise activity for a user",
+          "request": {
+            "name": "Get history of exercise activity for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "exercise",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37de3a1a-eb09-4c3d-b52f-ce4728c6a1a8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "exercise",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"strike\": 958.0140912392787,\n  \"exercisePrice\": 6637.434890739525,\n  \"premium\": \"string\",\n  \"timestamp\": \"string\",\n  \"ttl\": 137.58562569751388,\n  \"type\": \"string\",\n  \"profit\": \"string\",\n  \"size\": \"string\",\n  \"sizeToken\": {\n    \"address\": \"string\",\n    \"decimals\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"profitToken\": {\n    \"address\": \"string\",\n    \"decimals\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"txHash\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "acd98a00-583a-488a-a6b3-0ef1025e6877",
+    "name": "Stryke deposit exercise API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

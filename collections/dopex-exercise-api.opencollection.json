@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit exercise API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "exercise",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get information required to exercise an options position",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/exercise/prepare",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "optionId",
+                "value": "",
+                "type": "query",
+                "description": "ERC721 token ID of the options position"
+              },
+              {
+                "name": "swapperId",
+                "value": "",
+                "type": "query",
+                "description": "Swapper contract to route exercise swap through"
+              },
+              {
+                "name": "slippage",
+                "value": "",
+                "type": "query",
+                "description": "Max slippage allowance for the swap that takes place when options' position collateral tokens are swapped to the profit token"
+              }
+            ]
+          },
+          "docs": "Get information required to exercise an options position"
+        },
+        {
+          "info": {
+            "name": "Get history of exercise activity for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/exercise/history",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              },
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              }
+            ]
+          },
+          "docs": "Get history of exercise activity for a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

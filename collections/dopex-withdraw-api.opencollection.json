@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit withdraw API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "withdraw",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get history of withdraws from CLAMM for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/withdraw/history",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              },
+              {
+                "name": "pool",
+                "value": "",
+                "type": "query",
+                "description": "Address of the token pair pool"
+              }
+            ]
+          },
+          "docs": "Get history of withdraws from CLAMM for a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

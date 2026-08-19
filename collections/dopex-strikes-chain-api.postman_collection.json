@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "c25475e3-a260-449b-8389-986418ec2b03",
+      "name": "strikes-chain",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46982cf0-c379-40e9-87c4-03cfd3de9296",
+          "name": "Get strikes chain or options chain of a options market",
+          "request": {
+            "name": "Get strikes chain or options chain of a options market",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "strikes-chain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "callsReach",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "putsReach",
+                  "value": "<number>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a48f7e06-0c92-41aa-b480-d400c772488f",
+              "name": "List of strikes of the option market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "strikes-chain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "callsReach",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "putsReach",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"<strike price>\": {\n      \"totalLiquidity\": \"string\",\n      \"availableLiquidity\": \"string\",\n      \"utilization\": \"string\",\n      \"apr\": \"string\",\n      \"handler\": {\n        \"name\": \"string\",\n        \"deprecated\": true,\n        \"handler\": {},\n        \"pool\": \"string\"\n      },\n      \"meta\": {\n        \"hook\": \"string\",\n        \"tickLower\": 2360.0601612924065,\n        \"tickUpper\": 2797.9625302199106,\n        \"totalTokenLiquidity\": \"string\",\n        \"availableTokenLiquidity\": \"string\",\n        \"totalLiquidity\": \"string\",\n        \"availableLiquidity\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    }\n  },\n  {\n    \"<strike price>\": {\n      \"totalLiquidity\": \"string\",\n      \"availableLiquidity\": \"string\",\n      \"utilization\": \"string\",\n      \"apr\": \"string\",\n      \"handler\": {\n        \"name\": \"string\",\n        \"deprecated\": true,\n        \"handler\": {},\n        \"pool\": \"string\"\n      },\n      \"meta\": {\n        \"hook\": \"string\",\n        \"tickLower\": 4936.882758475509,\n        \"tickUpper\": 8639.126482077592,\n        \"totalTokenLiquidity\": \"string\",\n        \"availableTokenLiquidity\": \"string\",\n        \"totalLiquidity\": \"string\",\n        \"availableLiquidity\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "29211e37-a1bc-4a01-83fc-f8465f9a3f2f",
+    "name": "Stryke deposit strikes-chain API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

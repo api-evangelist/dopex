@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit purchase API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "purchase",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get quote for purchasing options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/purchase/quote",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "strike",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "markPrice",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ttl",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get quote for purchasing options"
+        },
+        {
+          "info": {
+            "name": "Get current options positions of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/purchase/positions",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              }
+            ]
+          },
+          "docs": "Get current options positions of a user"
+        },
+        {
+          "info": {
+            "name": "Get history of options purchases for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/purchase/history",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              }
+            ]
+          },
+          "docs": "Get history of options purchases for a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

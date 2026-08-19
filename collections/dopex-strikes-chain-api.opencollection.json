@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit strikes-chain API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "strikes-chain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get strikes chain or options chain of a options market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/strikes-chain",
+            "params": [
+              {
+                "name": "optionMarket",
+                "value": "",
+                "type": "query",
+                "description": "Address of the option market"
+              },
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "callsReach",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "putsReach",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get strikes chain or options chain of a options market"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

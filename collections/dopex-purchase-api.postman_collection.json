@@ -1,0 +1,431 @@
+{
+  "item": [
+    {
+      "id": "146eb730-813d-48b5-84c7-49bb4894c587",
+      "name": "purchase",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e4e7f03-f595-4425-b7be-4cb0fff0432f",
+          "name": "Get quote for purchasing options",
+          "request": {
+            "name": "Get quote for purchasing options",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "purchase",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "strike",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "markPrice",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "ttl",
+                  "value": "<number>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7143096e-8209-4db5-9857-c7471973124b",
+              "name": "Get cost of purchasing an option",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "purchase",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "strike",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "markPrice",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "ttl",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": {\n    \"address\": \"string\",\n    \"decimals\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"premium\": \"string\",\n  \"fees\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a19fe12-d2cb-4112-b0e3-65b8f2612e8e",
+          "name": "Get current options positions of a user",
+          "request": {
+            "name": "Get current options positions of a user",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "purchase",
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f72f2615-435c-4c1b-aa97-424cf77294cb",
+              "name": "List of options positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "purchase",
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"size\": \"string\",\n    \"premium\": \"string\",\n    \"strike\": 3343.0105627520556,\n    \"type\": \"call\",\n    \"token\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"meta\": {\n      \"tokenId\": \"string\",\n      \"expiry\": 5331.221803306841,\n      \"handlers\": [\n        {\n          \"name\": \"string\",\n          \"deprecated\": false,\n          \"handler\": {},\n          \"pool\": {}\n        },\n        {\n          \"name\": \"string\",\n          \"deprecated\": true,\n          \"handler\": {},\n          \"pool\": {}\n        }\n      ],\n      \"liquidities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  },\n  {\n    \"size\": \"string\",\n    \"premium\": \"string\",\n    \"strike\": 7896.093140078653,\n    \"type\": \"call\",\n    \"token\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"meta\": {\n      \"tokenId\": \"string\",\n      \"expiry\": 8638.513737536898,\n      \"handlers\": [\n        {\n          \"name\": \"string\",\n          \"deprecated\": false,\n          \"handler\": {},\n          \"pool\": {}\n        },\n        {\n          \"name\": \"string\",\n          \"deprecated\": true,\n          \"handler\": {},\n          \"pool\": {}\n        }\n      ],\n      \"liquidities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3775c056-0507-4e6f-a218-5461530d4ca6",
+          "name": "Get history of options purchases for a user",
+          "request": {
+            "name": "Get history of options purchases for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "purchase",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionMarket",
+                  "value": "<string>",
+                  "description": "(Required) Address of the option market"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d544f03-1049-4a8d-8166-2543d284dc8e",
+              "name": "History of options purchases by an address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "purchase",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "optionMarket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"txHash\": {},\n    \"timestamp\": 9552.539523498914,\n    \"strike\": 1646.0577202743286,\n    \"size\": \"string\",\n    \"ttl\": 4504.050584100545,\n    \"type\": \"put\",\n    \"premium\": \"string\",\n    \"token\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    }\n  },\n  {\n    \"txHash\": {},\n    \"timestamp\": 1812.3741456979747,\n    \"strike\": 5410.97798818309,\n    \"size\": \"string\",\n    \"ttl\": 7967.722056027834,\n    \"type\": \"put\",\n    \"premium\": \"string\",\n    \"token\": {\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5600ae50-8689-42d1-8600-c0e5ca4da4d2",
+    "name": "Stryke deposit purchase API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

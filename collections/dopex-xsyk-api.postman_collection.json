@@ -1,0 +1,130 @@
+{
+  "item": [
+    {
+      "id": "8a276ce6-7754-4d14-a685-0c37d15aa6ae",
+      "name": "xSYK",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5471eb86-226e-477f-bb3e-20278571c833",
+          "name": "Vest Positions Controller get User Data",
+          "request": {
+            "name": "Vest Positions Controller get User Data",
+            "description": {},
+            "url": {
+              "path": [
+                "xsyk",
+                "vest-positions",
+                ":account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) Address of user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97e9e3cb-06cc-44e3-8992-9411bf18b0d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "xsyk",
+                    "vest-positions",
+                    ":account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) Address of user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"totalXSykAllocated\": \"string\",\n    \"totalSykPending\": \"string\",\n    \"positions\": [\n      {\n        \"account\": \"string\",\n        \"duration\": 2159.069686424102,\n        \"xSykAmount\": \"string\",\n        \"sykAmount\": \"string\",\n        \"vestIndex\": \"string\",\n        \"blockTimestamp\": 9220.778256865879,\n        \"transactionHash\": \"string\"\n      },\n      {\n        \"account\": \"string\",\n        \"duration\": 5223.1346584685825,\n        \"xSykAmount\": \"string\",\n        \"sykAmount\": \"string\",\n        \"vestIndex\": \"string\",\n        \"blockTimestamp\": 6698.546846997046,\n        \"transactionHash\": \"string\"\n      }\n    ]\n  },\n  {\n    \"totalXSykAllocated\": \"string\",\n    \"totalSykPending\": \"string\",\n    \"positions\": [\n      {\n        \"account\": \"string\",\n        \"duration\": 237.56488676728415,\n        \"xSykAmount\": \"string\",\n        \"sykAmount\": \"string\",\n        \"vestIndex\": \"string\",\n        \"blockTimestamp\": 5620.511457457697,\n        \"transactionHash\": \"string\"\n      },\n      {\n        \"account\": \"string\",\n        \"duration\": 3360.292633651701,\n        \"xSykAmount\": \"string\",\n        \"sykAmount\": \"string\",\n        \"vestIndex\": \"string\",\n        \"blockTimestamp\": 4898.5889954404,\n        \"transactionHash\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b34c0608-3217-4ffa-ba47-626b60cd2b36",
+    "name": "Stryke deposit xSYK API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "item": [
+    {
+      "id": "d0725c7c-1b86-4f3f-9a7a-ceb053afe992",
+      "name": "deposit",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc5c1657-3026-466c-87c3-aade433b75e9",
+          "name": "Prepare a executable transaction and a summary for providing liquidity into CLAMM",
+          "request": {
+            "name": "Prepare a executable transaction and a summary for providing liquidity into CLAMM",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "deposit",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool",
+                  "value": "<string>",
+                  "description": "(Required) Address of the token pair pool"
+                },
+                {
+                  "disabled": false,
+                  "key": "hook",
+                  "value": "<string>",
+                  "description": "(Required) Address of the hook to deposit through"
+                },
+                {
+                  "disabled": false,
+                  "key": "handler",
+                  "value": "<string>",
+                  "description": "(Required) Address of the handler to deposit through"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxStrike",
+                  "value": "<number>",
+                  "description": "(Required) Range max strike price"
+                },
+                {
+                  "disabled": false,
+                  "key": "minStrike",
+                  "value": "<number>",
+                  "description": "(Required) Range min strike price"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionsAmount",
+                  "value": "<number>",
+                  "description": "(Required) Amount of options to provide liquidity for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "699e96da-6676-4704-bfd7-6c43640b0769",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "deposit",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hook",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "handler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxStrike",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "minStrike",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "optionsAmount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tx\": {\n    \"to\": \"string\",\n    \"data\": \"string\"\n  },\n  \"strikes\": [\n    7588.278036213619,\n    9776.049935768571\n  ],\n  \"tokens\": {\n    \"callToken\": {\n      \"amount\": \"string\",\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"putToken\": {\n      \"amount\": \"string\",\n      \"address\": \"string\",\n      \"decimals\": \"string\",\n      \"symbol\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bd3b8b5-2e61-4666-8e2d-398843c8bf5c",
+          "name": "Get history of deposit activity",
+          "request": {
+            "name": "Get history of deposit activity",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "deposit",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool",
+                  "value": "<string>",
+                  "description": "(Required) Address of the token pair pool"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e9f9521-baa9-4580-9cd7-6d5db327dc02",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "deposit",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"strikes\": {\n      \"call\": 8776.41544941678,\n      \"put\": 137.51697024789178\n    },\n    \"txHash\": \"string\",\n    \"timestamp\": 4909.8630785400655,\n    \"liquidity\": {\n      \"amount0\": \"string\",\n      \"amount1\": \"string\"\n    },\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"handler\": {\n      \"name\": \"string\",\n      \"deprecated\": false,\n      \"handler\": {},\n      \"pool\": \"string\"\n    }\n  },\n  {\n    \"strikes\": {\n      \"call\": 932.4698515705387,\n      \"put\": 3185.495642284206\n    },\n    \"txHash\": \"string\",\n    \"timestamp\": 65.14928126953534,\n    \"liquidity\": {\n      \"amount0\": \"string\",\n      \"amount1\": \"string\"\n    },\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"handler\": {\n      \"name\": \"string\",\n      \"deprecated\": true,\n      \"handler\": {},\n      \"pool\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8160c4b0-2f8c-43a8-b2c9-c93db4e1eaa0",
+          "name": "Get current deposit positions",
+          "request": {
+            "name": "Get current deposit positions",
+            "description": {},
+            "url": {
+              "path": [
+                "clamm",
+                "deposit",
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<number>",
+                  "description": "(Required) Chain ID of the network"
+                },
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for first (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>",
+                  "description": "(Required) Pagination parameter for skip (Similar to Qraphql)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool",
+                  "value": "<string>",
+                  "description": "(Required) Address of the token pair pool"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Address of the user"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a575ba1-650b-4065-8d9c-99ed01d152ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clamm",
+                    "deposit",
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "first",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"strikes\": {\n      \"call\": 2858.765438149353,\n      \"put\": 3062.5920089045912\n    },\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"earned\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"liquidity\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"withdrawable\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"reserved\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\",\n      \"withdrawable\": {\n        \"token0\": \"string\",\n        \"token1\": \"string\",\n        \"liquidity\": \"string\"\n      },\n      \"lastReserve\": 4932.647728485657\n    }\n  },\n  {\n    \"strikes\": {\n      \"call\": 7653.605139194106,\n      \"put\": 4629.96129871672\n    },\n    \"tokens\": {\n      \"token0\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"token1\": {\n        \"address\": \"string\",\n        \"decimals\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"earned\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"liquidity\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"withdrawable\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\"\n    },\n    \"reserved\": {\n      \"token0\": \"string\",\n      \"token1\": \"string\",\n      \"withdrawable\": {\n        \"token0\": \"string\",\n        \"token1\": \"string\",\n        \"liquidity\": \"string\"\n      },\n      \"lastReserve\": 9330.267363882902\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stryke.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76f54889-688d-4a2f-8d0d-b7a546c2e413",
+    "name": "Stryke deposit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

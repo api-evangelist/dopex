@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit option-markets API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "option-markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get option markets on a chain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/option-markets",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              }
+            ]
+          },
+          "docs": "Get option markets on a chain"
+        },
+        {
+          "info": {
+            "name": "Get option markets on chains specified",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/v1.1/clamm/option-markets",
+            "params": [
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Chain IDs of networks to query option markets for"
+              }
+            ]
+          },
+          "docs": "Get option markets on chains specified"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

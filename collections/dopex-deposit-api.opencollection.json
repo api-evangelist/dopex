@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stryke deposit API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "deposit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prepare a executable transaction and a summary for providing liquidity into CLAMM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/deposit/prepare",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "pool",
+                "value": "",
+                "type": "query",
+                "description": "Address of the token pair pool"
+              },
+              {
+                "name": "hook",
+                "value": "",
+                "type": "query",
+                "description": "Address of the hook to deposit through"
+              },
+              {
+                "name": "handler",
+                "value": "",
+                "type": "query",
+                "description": "Address of the handler to deposit through"
+              },
+              {
+                "name": "maxStrike",
+                "value": "",
+                "type": "query",
+                "description": "Range max strike price"
+              },
+              {
+                "name": "minStrike",
+                "value": "",
+                "type": "query",
+                "description": "Range min strike price"
+              },
+              {
+                "name": "optionsAmount",
+                "value": "",
+                "type": "query",
+                "description": "Amount of options to provide liquidity for."
+              }
+            ]
+          },
+          "docs": "Prepare a executable transaction and a summary for providing liquidity into CLAMM"
+        },
+        {
+          "info": {
+            "name": "Get history of deposit activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/deposit/history",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              },
+              {
+                "name": "pool",
+                "value": "",
+                "type": "query",
+                "description": "Address of the token pair pool"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              }
+            ]
+          },
+          "docs": "Get history of deposit activity"
+        },
+        {
+          "info": {
+            "name": "Get current deposit positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stryke.xyz/clamm/deposit/positions",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID of the network"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for first (Similar to Qraphql)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination parameter for skip (Similar to Qraphql)"
+              },
+              {
+                "name": "pool",
+                "value": "",
+                "type": "query",
+                "description": "Address of the token pair pool"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user"
+              }
+            ]
+          },
+          "docs": "Get current deposit positions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
