@@ -101,6 +101,8 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
+  - Deposit
+  tags_raw:
   - deposit
   properties:
   - type: OpenAPI
@@ -131,6 +133,8 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
+  - Exercise
+  tags_raw:
   - exercise
   properties:
   - type: OpenAPI
@@ -191,6 +195,8 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
+  - Purchase
+  tags_raw:
   - purchase
   properties:
   - type: OpenAPI
@@ -221,6 +227,8 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
+  - Stats
+  tags_raw:
   - stats
   properties:
   - type: OpenAPI
@@ -281,6 +289,8 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
+  - Withdraw
+  tags_raw:
   - withdraw
   properties:
   - type: OpenAPI
