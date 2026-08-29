@@ -16,6 +16,18 @@ description: >-
   exposes endpoints for option market data, strike chains, LP position management,
   trade history, and xSYK staking positions, supporting integrators building
   on-chain options products and analytics on Arbitrum and other EVM chains.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: open
