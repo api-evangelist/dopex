@@ -113,7 +113,7 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
-  - deposit
+  - Deposit
   tags_raw:
   - deposit
   properties:
@@ -301,7 +301,7 @@ apis:
   humanURL: https://docs.stryke.xyz/developers/apis
   baseURL: https://api.stryke.xyz
   tags:
-  - withdraw
+  - Withdraw
   tags_raw:
   - withdraw
   properties:
