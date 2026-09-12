@@ -2,20 +2,18 @@
   "repo": "dopex",
   "feeds": [
     {
+      "source": "https://github.com/dopex-io/elvarg",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://teamdopex.medium.com/feed",
       "feed_url": "https://teamdopex.medium.com/feed",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
-      "source": "https://github.com/dopex-io/elvarg",
-      "error": "HTTPError"
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 11,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
