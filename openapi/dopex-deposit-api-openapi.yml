@@ -1,18 +1,18 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Stryke deposit API
+  title: Stryke Deposit API
   description: ''
   version: '1.0'
   contact: {}
 servers:
 - url: https://api.stryke.xyz
 tags:
-- name: deposit
+- name: Deposit
 paths:
   /clamm/deposit/prepare:
     get:
       operationId: DepositController_prepareDeposit
-      summary: Prepare a executable transaction and a summary for providing liquidity into CLAMM
+      summary: Prepare a executable transaction and a summary for providing liquidity into…
       parameters:
       - name: chainId
         required: true
@@ -67,7 +67,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepareDepositResponseDto'
       tags:
-      - deposit
+      - Deposit
   /clamm/deposit/history:
     get:
       operationId: DepositController_getHistory
@@ -124,7 +124,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/DepositHistoryResponseDto'
       tags:
-      - deposit
+      - Deposit
   /clamm/deposit/positions:
     get:
       operationId: DepositController_getPositions
@@ -181,12 +181,14 @@ paths:
                 items:
                   $ref: '#/components/schemas/DepositPositionsResponseDto'
       tags:
-      - deposit
+      - Deposit
 components:
   schemas:
-    TokenDto:
+    IntersectionAmountTokenDto:
       type: object
       properties:
+        amount:
+          type: string
         address:
           type: string
           description: Address of the ERC20 token
@@ -197,25 +199,10 @@ components:
           type: string
           description: Symbol of the ERC20 token
       required:
+      - amount
       - address
       - decimals
       - symbol
-    DepositResponseDto__ReservedWithdrawable:
-      type: object
-      properties:
-        token0:
-          type: string
-          description: Amount of token0
-        token1:
-          type: string
-          description: Amount of token1
-        liquidity:
-          type: string
-          readOnly: true
-      required:
-      - token0
-      - token1
-      - liquidity
     Strikes:
       type: object
       properties:
@@ -228,18 +215,6 @@ components:
       required:
       - call
       - put
-    TransactionData:
-      type: object
-      properties:
-        to:
-          type: string
-          description: Address to send the transaction calldata to
-        data:
-          type: string
-          description: Transaction calldata
-      required:
-      - to
-      - data
     HandlerMeta:
       type: object
       properties:
@@ -256,6 +231,94 @@ components:
       - deprecated
       - handler
       - pool
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    Token0Token1Composition:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+      required:
+      - token0
+      - token1
+    PrepareDepositResponseDto__Tokens:
+      type: object
+      properties:
+        callToken:
+          description: Call token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+        putToken:
+          description: Put token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+      required:
+      - callToken
+      - putToken
+    TransactionData:
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address to send the transaction calldata to
+        data:
+          type: string
+          description: Transaction calldata
+      required:
+      - to
+      - data
+    PrepareDepositResponseDto:
+      type: object
+      properties:
+        tx:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TransactionData'
+        strikes:
+          readOnly: true
+          type: array
+          items:
+            type: number
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PrepareDepositResponseDto__Tokens'
+      required:
+      - tx
+      - strikes
+      - tokens
+    Token0Token1:
+      type: object
+      properties:
+        token0:
+          description: Token0 details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        token1:
+          description: Token1 token details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - token0
+      - token1
     DepositHistoryResponseDto:
       type: object
       properties:
@@ -288,54 +351,39 @@ components:
       - liquidity
       - tokens
       - handler
-    Token0Token1:
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
+          type: string
+          description: Amount of token0 provided as liquidity
+        amount1:
+          type: string
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1
+    DepositResponseDto__Reserved:
       type: object
       properties:
         token0:
-          description: Token0 details and amount
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
+          type: string
+          description: Amount of token0
         token1:
-          description: Token1 token details and amount
+          type: string
+          description: Amount of token1
+        withdrawable:
+          readOnly: true
           allOf:
-          - $ref: '#/components/schemas/TokenDto'
+          - $ref: '#/components/schemas/DepositResponseDto__ReservedWithdrawable'
+        lastReserve:
+          type: number
+          readOnly: true
       required:
       - token0
       - token1
-    PrepareDepositResponseDto:
-      type: object
-      properties:
-        tx:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TransactionData'
-        strikes:
-          readOnly: true
-          type: array
-          items:
-            type: number
-        tokens:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/PrepareDepositResponseDto__Tokens'
-      required:
-      - tx
-      - strikes
-      - tokens
-    PrepareDepositResponseDto__Tokens:
-      type: object
-      properties:
-        callToken:
-          description: Call token details and amount
-          allOf:
-          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
-        putToken:
-          description: Put token details and amount
-          allOf:
-          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
-      required:
-      - callToken
-      - putToken
+      - withdrawable
+      - lastReserve
     DepositPositionsResponseDto:
       type: object
       properties:
@@ -370,7 +418,7 @@ components:
       - liquidity
       - withdrawable
       - reserved
-    Token0Token1Composition:
+    DepositResponseDto__ReservedWithdrawable:
       type: object
       properties:
         token0:
@@ -379,58 +427,10 @@ components:
         token1:
           type: string
           description: Amount of token1
-      required:
-      - token0
-      - token1
-    IntersectionAmountTokenDto:
-      type: object
-      properties:
-        amount:
+        liquidity:
           type: string
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - amount
-      - address
-      - decimals
-      - symbol
-    LiquidityToken0Token1:
-      type: object
-      properties:
-        amount0:
-          type: string
-          description: Amount of token0 provided as liquidity
-        amount1:
-          type: string
-          description: Amount of token1 provided as liquidity
-      required:
-      - amount0
-      - amount1
-    DepositResponseDto__Reserved:
-      type: object
-      properties:
-        token0:
-          type: string
-          description: Amount of token0
-        token1:
-          type: string
-          description: Amount of token1
-        withdrawable:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/DepositResponseDto__ReservedWithdrawable'
-        lastReserve:
-          type: number
           readOnly: true
       required:
       - token0
       - token1
-      - withdrawable
-      - lastReserve
+      - liquidity

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Stryke deposit xSYK API
+  title: Stryke X SYK API
   description: ''
   version: '1.0'
   contact: {}
@@ -39,8 +39,28 @@ paths:
                   $ref: '#/components/schemas/UserXSykDataResponseDto'
       tags:
       - xSYK
+      summary: Vest positions controller get user data
+      x-summary-source: derived
 components:
   schemas:
+    UserXSykDataResponseDto:
+      type: object
+      properties:
+        totalXSykAllocated:
+          type: string
+          readOnly: true
+        totalSykPending:
+          type: string
+          readOnly: true
+        positions:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/VestPositionsResponseDto'
+      required:
+      - totalXSykAllocated
+      - totalSykPending
+      - positions
     VestPositionsResponseDto:
       type: object
       properties:
@@ -73,21 +93,3 @@ components:
       - vestIndex
       - blockTimestamp
       - transactionHash
-    UserXSykDataResponseDto:
-      type: object
-      properties:
-        totalXSykAllocated:
-          type: string
-          readOnly: true
-        totalSykPending:
-          type: string
-          readOnly: true
-        positions:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/VestPositionsResponseDto'
-      required:
-      - totalXSykAllocated
-      - totalSykPending
-      - positions

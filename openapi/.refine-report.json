@@ -1,14 +1,7 @@
 {
   "provider": "dopex",
   "sources": [
-    "dopex-deposit-api-openapi.yml",
-    "dopex-exercise-api-openapi.yml",
-    "dopex-option-markets-api-openapi.yml",
-    "dopex-purchase-api-openapi.yml",
-    "dopex-stats-api-openapi.yml",
-    "dopex-strikes-chain-api-openapi.yml",
-    "dopex-withdraw-api-openapi.yml",
-    "dopex-xsyk-api-openapi.yml"
+    "_original/stryke-api.yaml"
   ],
   "outputs": [
     "dopex-deposit-api-openapi.yml",
@@ -23,6 +16,27 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "stryke-api.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "stryke-api.yaml: declared missing tag: deposit",
+    "stryke-api.yaml: declared missing tag: exercise",
+    "stryke-api.yaml: declared missing tag: option-markets",
+    "stryke-api.yaml: declared missing tag: purchase",
+    "stryke-api.yaml: declared missing tag: stats",
+    "stryke-api.yaml: declared missing tag: strikes-chain",
+    "stryke-api.yaml: declared missing tag: withdraw",
+    "stryke-api.yaml: declared missing tag: xSYK",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "dopex-deposit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-exercise-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-option-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-purchase-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-stats-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-strikes-chain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-withdraw-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dopex-xsyk-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Stryke deposit withdraw API
+  title: Stryke Withdraw API
   description: ''
   version: '1.0'
   contact: {}
 servers:
 - url: https://api.stryke.xyz
 tags:
-- name: withdraw
+- name: Withdraw
 paths:
   /clamm/withdraw/history:
     get:
@@ -67,25 +67,9 @@ paths:
         '400':
           description: Failed to fetch withdraw history
       tags:
-      - withdraw
+      - Withdraw
 components:
   schemas:
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
     Strikes:
       type: object
       properties:
@@ -114,6 +98,22 @@ components:
       - deprecated
       - handler
       - pool
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
     Token0Token1:
       type: object
       properties:

@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Stryke deposit purchase API
+  title: Stryke Purchase API
   description: ''
   version: '1.0'
   contact: {}
 servers:
 - url: https://api.stryke.xyz
 tags:
-- name: purchase
+- name: Purchase
 paths:
   /clamm/purchase/quote:
     get:
@@ -70,7 +70,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/QuoteResponseDto'
       tags:
-      - purchase
+      - Purchase
   /clamm/purchase/positions:
     get:
       operationId: PurchaseController_getPurchasePositions
@@ -127,7 +127,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/PurchasePositionsResponseDto'
       tags:
-      - purchase
+      - Purchase
   /clamm/purchase/history:
     get:
       operationId: PurchaseController_getHistory
@@ -184,42 +184,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/PurchaseHistoryResponseDto'
       tags:
-      - purchase
+      - Purchase
 components:
   schemas:
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
-    QuoteResponseDto:
-      type: object
-      properties:
-        token:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        premium:
-          type: string
-          readOnly: true
-        fees:
-          type: string
-          readOnly: true
-      required:
-      - token
-      - premium
-      - fees
     PurchaseHistoryResponseDto:
       type: object
       properties:
@@ -260,6 +227,39 @@ components:
       - type
       - premium
       - token
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    QuoteResponseDto:
+      type: object
+      properties:
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        premium:
+          type: string
+          readOnly: true
+        fees:
+          type: string
+          readOnly: true
+      required:
+      - token
+      - premium
+      - fees
     PurchasePositionMetaHandlerDto:
       type: object
       properties:
@@ -280,6 +280,30 @@ components:
       - deprecated
       - handler
       - pool
+    PurchasePositionMetaDto:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          readOnly: true
+        expiry:
+          type: number
+          readOnly: true
+        handlers:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
+        liquidities:
+          readOnly: true
+          type: array
+          items:
+            type: string
+      required:
+      - tokenId
+      - expiry
+      - handlers
+      - liquidities
     PurchasePositionsResponseDto:
       type: object
       properties:
@@ -313,27 +337,3 @@ components:
       - type
       - token
       - meta
-    PurchasePositionMetaDto:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          readOnly: true
-        expiry:
-          type: number
-          readOnly: true
-        handlers:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
-        liquidities:
-          readOnly: true
-          type: array
-          items:
-            type: string
-      required:
-      - tokenId
-      - expiry
-      - handlers
-      - liquidities
