@@ -184,6 +184,46 @@ paths:
       - Deposit
 components:
   schemas:
+    DepositResponseDto__ReservedWithdrawable:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+        liquidity:
+          type: string
+          readOnly: true
+      required:
+      - token0
+      - token1
+      - liquidity
+    Token0Token1Composition:
+      type: object
+      properties:
+        token0:
+          type: string
+          description: Amount of token0
+        token1:
+          type: string
+          description: Amount of token1
+      required:
+      - token0
+      - token1
+    Strikes:
+      type: object
+      properties:
+        call:
+          type: number
+          description: Call strike
+        put:
+          type: number
+          description: Put strike
+      required:
+      - call
+      - put
     IntersectionAmountTokenDto:
       type: object
       properties:
@@ -203,18 +243,46 @@ components:
       - address
       - decimals
       - symbol
-    Strikes:
+    Token0Token1:
       type: object
       properties:
-        call:
-          type: number
-          description: Call strike
-        put:
-          type: number
-          description: Put strike
+        token0:
+          description: Token0 details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        token1:
+          description: Token1 token details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
       required:
-      - call
-      - put
+      - token0
+      - token1
+    PrepareDepositResponseDto__Tokens:
+      type: object
+      properties:
+        callToken:
+          description: Call token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+        putToken:
+          description: Put token details and amount
+          allOf:
+          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
+      required:
+      - callToken
+      - putToken
+    TransactionData:
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address to send the transaction calldata to
+        data:
+          type: string
+          description: Transaction calldata
+      required:
+      - to
+      - data
     HandlerMeta:
       type: object
       properties:
@@ -247,122 +315,6 @@ components:
       - address
       - decimals
       - symbol
-    Token0Token1Composition:
-      type: object
-      properties:
-        token0:
-          type: string
-          description: Amount of token0
-        token1:
-          type: string
-          description: Amount of token1
-      required:
-      - token0
-      - token1
-    PrepareDepositResponseDto__Tokens:
-      type: object
-      properties:
-        callToken:
-          description: Call token details and amount
-          allOf:
-          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
-        putToken:
-          description: Put token details and amount
-          allOf:
-          - $ref: '#/components/schemas/IntersectionAmountTokenDto'
-      required:
-      - callToken
-      - putToken
-    TransactionData:
-      type: object
-      properties:
-        to:
-          type: string
-          description: Address to send the transaction calldata to
-        data:
-          type: string
-          description: Transaction calldata
-      required:
-      - to
-      - data
-    PrepareDepositResponseDto:
-      type: object
-      properties:
-        tx:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TransactionData'
-        strikes:
-          readOnly: true
-          type: array
-          items:
-            type: number
-        tokens:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/PrepareDepositResponseDto__Tokens'
-      required:
-      - tx
-      - strikes
-      - tokens
-    Token0Token1:
-      type: object
-      properties:
-        token0:
-          description: Token0 details and amount
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        token1:
-          description: Token1 token details and amount
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-      required:
-      - token0
-      - token1
-    DepositHistoryResponseDto:
-      type: object
-      properties:
-        strikes:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Strikes'
-        txHash:
-          type: string
-          readOnly: true
-        timestamp:
-          type: number
-          readOnly: true
-        liquidity:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/LiquidityToken0Token1'
-        tokens:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Token0Token1'
-        handler:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/HandlerMeta'
-      required:
-      - strikes
-      - txHash
-      - timestamp
-      - liquidity
-      - tokens
-      - handler
-    LiquidityToken0Token1:
-      type: object
-      properties:
-        amount0:
-          type: string
-          description: Amount of token0 provided as liquidity
-        amount1:
-          type: string
-          description: Amount of token1 provided as liquidity
-      required:
-      - amount0
-      - amount1
     DepositResponseDto__Reserved:
       type: object
       properties:
@@ -418,19 +370,67 @@ components:
       - liquidity
       - withdrawable
       - reserved
-    DepositResponseDto__ReservedWithdrawable:
+    PrepareDepositResponseDto:
       type: object
       properties:
-        token0:
+        tx:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TransactionData'
+        strikes:
+          readOnly: true
+          type: array
+          items:
+            type: number
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PrepareDepositResponseDto__Tokens'
+      required:
+      - tx
+      - strikes
+      - tokens
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
           type: string
-          description: Amount of token0
-        token1:
+          description: Amount of token0 provided as liquidity
+        amount1:
           type: string
-          description: Amount of token1
-        liquidity:
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1
+    DepositHistoryResponseDto:
+      type: object
+      properties:
+        strikes:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Strikes'
+        txHash:
           type: string
           readOnly: true
+        timestamp:
+          type: number
+          readOnly: true
+        liquidity:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/LiquidityToken0Token1'
+        tokens:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Token0Token1'
+        handler:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/HandlerMeta'
       required:
-      - token0
-      - token1
+      - strikes
+      - txHash
+      - timestamp
       - liquidity
+      - tokens
+      - handler

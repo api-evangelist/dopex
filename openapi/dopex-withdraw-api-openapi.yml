@@ -82,64 +82,6 @@ components:
       required:
       - call
       - put
-    HandlerMeta:
-      type: object
-      properties:
-        name:
-          type: string
-        deprecated:
-          type: boolean
-        handler:
-          type: object
-        pool:
-          type: string
-      required:
-      - name
-      - deprecated
-      - handler
-      - pool
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
-    Token0Token1:
-      type: object
-      properties:
-        token0:
-          description: Token0 details and amount
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        token1:
-          description: Token1 token details and amount
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-      required:
-      - token0
-      - token1
-    LiquidityToken0Token1:
-      type: object
-      properties:
-        amount0:
-          type: string
-          description: Amount of token0 provided as liquidity
-        amount1:
-          type: string
-          description: Amount of token1 provided as liquidity
-      required:
-      - amount0
-      - amount1
     WithdrawHistoryResponseDto:
       type: object
       properties:
@@ -172,3 +114,61 @@ components:
       - txHash
       - tokens
       - handler
+    Token0Token1:
+      type: object
+      properties:
+        token0:
+          description: Token0 details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        token1:
+          description: Token1 token details and amount
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - token0
+      - token1
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
+          type: string
+          description: Amount of token0 provided as liquidity
+        amount1:
+          type: string
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1

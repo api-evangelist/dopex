@@ -58,79 +58,6 @@ paths:
       - strikes-chain
 components:
   schemas:
-    StrikesChainResponseDto:
-      type: object
-      properties:
-        <strike price>:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/StrikesChainDto'
-      required:
-      - <strike price>
-    HandlerMeta:
-      type: object
-      properties:
-        name:
-          type: string
-        deprecated:
-          type: boolean
-        handler:
-          type: object
-        pool:
-          type: string
-      required:
-      - name
-      - deprecated
-      - handler
-      - pool
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
-    StrikesChainMetaDto:
-      type: object
-      properties:
-        hook:
-          type: string
-          readOnly: true
-        tickLower:
-          type: number
-          readOnly: true
-        tickUpper:
-          type: number
-          readOnly: true
-        totalTokenLiquidity:
-          type: string
-          readOnly: true
-        availableTokenLiquidity:
-          type: string
-          readOnly: true
-        totalLiquidity:
-          type: string
-          readOnly: true
-        availableLiquidity:
-          type: string
-          readOnly: true
-      required:
-      - hook
-      - tickLower
-      - tickUpper
-      - totalTokenLiquidity
-      - availableTokenLiquidity
-      - totalLiquidity
-      - availableLiquidity
     StrikesChainDto:
       type: object
       properties:
@@ -166,3 +93,76 @@ components:
       - handler
       - meta
       - token
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    StrikesChainResponseDto:
+      type: object
+      properties:
+        <strike price>:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/StrikesChainDto'
+      required:
+      - <strike price>
+    StrikesChainMetaDto:
+      type: object
+      properties:
+        hook:
+          type: string
+          readOnly: true
+        tickLower:
+          type: number
+          readOnly: true
+        tickUpper:
+          type: number
+          readOnly: true
+        totalTokenLiquidity:
+          type: string
+          readOnly: true
+        availableTokenLiquidity:
+          type: string
+          readOnly: true
+        totalLiquidity:
+          type: string
+          readOnly: true
+        availableLiquidity:
+          type: string
+          readOnly: true
+      required:
+      - hook
+      - tickLower
+      - tickUpper
+      - totalTokenLiquidity
+      - availableTokenLiquidity
+      - totalLiquidity
+      - availableLiquidity

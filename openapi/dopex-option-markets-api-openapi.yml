@@ -60,9 +60,22 @@ paths:
       - option-markets
 components:
   schemas:
-    OptionMarketsResponseDtoV2__Pools:
+    TokenDto:
       type: object
-      properties: {}
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
     OptionMarketsResponseDtoV1:
       type: object
       properties:
@@ -121,22 +134,9 @@ components:
       - totalFees
       - pairName
       - ticker
-    TokenDto:
+    OptionMarketsResponseDtoV2__Pools:
       type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
+      properties: {}
     OptionMarketsResponseDtoV2:
       type: object
       properties:

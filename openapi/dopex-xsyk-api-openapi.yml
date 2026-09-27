@@ -43,24 +43,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserXSykDataResponseDto:
-      type: object
-      properties:
-        totalXSykAllocated:
-          type: string
-          readOnly: true
-        totalSykPending:
-          type: string
-          readOnly: true
-        positions:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/VestPositionsResponseDto'
-      required:
-      - totalXSykAllocated
-      - totalSykPending
-      - positions
     VestPositionsResponseDto:
       type: object
       properties:
@@ -93,3 +75,21 @@ components:
       - vestIndex
       - blockTimestamp
       - transactionHash
+    UserXSykDataResponseDto:
+      type: object
+      properties:
+        totalXSykAllocated:
+          type: string
+          readOnly: true
+        totalSykPending:
+          type: string
+          readOnly: true
+        positions:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/VestPositionsResponseDto'
+      required:
+      - totalXSykAllocated
+      - totalSykPending
+      - positions

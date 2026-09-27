@@ -187,6 +187,96 @@ paths:
       - Purchase
 components:
   schemas:
+    QuoteResponseDto:
+      type: object
+      properties:
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        premium:
+          type: string
+          readOnly: true
+        fees:
+          type: string
+          readOnly: true
+      required:
+      - token
+      - premium
+      - fees
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
+    PurchasePositionsResponseDto:
+      type: object
+      properties:
+        size:
+          type: string
+          readOnly: true
+        premium:
+          type: string
+          readOnly: true
+        strike:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - call
+          - put
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        meta:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PurchasePositionMetaDto'
+      required:
+      - size
+      - premium
+      - strike
+      - type
+      - token
+      - meta
+    PurchasePositionMetaDto:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          readOnly: true
+        expiry:
+          type: number
+          readOnly: true
+        handlers:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
+        liquidities:
+          readOnly: true
+          type: array
+          items:
+            type: string
+      required:
+      - tokenId
+      - expiry
+      - handlers
+      - liquidities
     PurchaseHistoryResponseDto:
       type: object
       properties:
@@ -227,39 +317,6 @@ components:
       - type
       - premium
       - token
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
-    QuoteResponseDto:
-      type: object
-      properties:
-        token:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        premium:
-          type: string
-          readOnly: true
-        fees:
-          type: string
-          readOnly: true
-      required:
-      - token
-      - premium
-      - fees
     PurchasePositionMetaHandlerDto:
       type: object
       properties:
@@ -280,60 +337,3 @@ components:
       - deprecated
       - handler
       - pool
-    PurchasePositionMetaDto:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          readOnly: true
-        expiry:
-          type: number
-          readOnly: true
-        handlers:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
-        liquidities:
-          readOnly: true
-          type: array
-          items:
-            type: string
-      required:
-      - tokenId
-      - expiry
-      - handlers
-      - liquidities
-    PurchasePositionsResponseDto:
-      type: object
-      properties:
-        size:
-          type: string
-          readOnly: true
-        premium:
-          type: string
-          readOnly: true
-        strike:
-          type: number
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-          enum:
-          - call
-          - put
-        token:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        meta:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/PurchasePositionMetaDto'
-      required:
-      - size
-      - premium
-      - strike
-      - type
-      - token
-      - meta
