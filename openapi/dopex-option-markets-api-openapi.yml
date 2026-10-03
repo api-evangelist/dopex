@@ -76,67 +76,6 @@ components:
       - address
       - decimals
       - symbol
-    OptionMarketsResponseDtoV1:
-      type: object
-      properties:
-        deprecated:
-          type: boolean
-          readOnly: true
-        address:
-          type: string
-          readOnly: true
-        callToken:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        putToken:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        primePool:
-          type: string
-          readOnly: true
-        dpFee:
-          type: string
-          readOnly: true
-        optionsPricing:
-          type: string
-          readOnly: true
-        tokenURIFetcher:
-          type: string
-          readOnly: true
-        totalPremium:
-          type: string
-          readOnly: true
-        totalVolume:
-          type: string
-          readOnly: true
-        totalFees:
-          type: string
-          readOnly: true
-        pairName:
-          type: string
-          readOnly: true
-        ticker:
-          type: string
-          readOnly: true
-      required:
-      - deprecated
-      - address
-      - callToken
-      - putToken
-      - primePool
-      - dpFee
-      - optionsPricing
-      - tokenURIFetcher
-      - totalPremium
-      - totalVolume
-      - totalFees
-      - pairName
-      - ticker
-    OptionMarketsResponseDtoV2__Pools:
-      type: object
-      properties: {}
     OptionMarketsResponseDtoV2:
       type: object
       properties:
@@ -217,3 +156,64 @@ components:
       - totalLiquidity
       - availableLiquidity
       - openInterest
+    OptionMarketsResponseDtoV1:
+      type: object
+      properties:
+        deprecated:
+          type: boolean
+          readOnly: true
+        address:
+          type: string
+          readOnly: true
+        callToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        putToken:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        primePool:
+          type: string
+          readOnly: true
+        dpFee:
+          type: string
+          readOnly: true
+        optionsPricing:
+          type: string
+          readOnly: true
+        tokenURIFetcher:
+          type: string
+          readOnly: true
+        totalPremium:
+          type: string
+          readOnly: true
+        totalVolume:
+          type: string
+          readOnly: true
+        totalFees:
+          type: string
+          readOnly: true
+        pairName:
+          type: string
+          readOnly: true
+        ticker:
+          type: string
+          readOnly: true
+      required:
+      - deprecated
+      - address
+      - callToken
+      - putToken
+      - primePool
+      - dpFee
+      - optionsPricing
+      - tokenURIFetcher
+      - totalPremium
+      - totalVolume
+      - totalFees
+      - pairName
+      - ticker
+    OptionMarketsResponseDtoV2__Pools:
+      type: object
+      properties: {}

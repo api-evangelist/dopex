@@ -182,6 +182,18 @@ components:
       - sizeToken
       - profitToken
       - txHash
+    TransactionData:
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address to send the transaction calldata to
+        data:
+          type: string
+          description: Transaction calldata
+      required:
+      - to
+      - data
     PrepareExerciseResponseDto:
       type: object
       properties:
@@ -211,15 +223,3 @@ components:
       - swapData
       - swappers
       - tx
-    TransactionData:
-      type: object
-      properties:
-        to:
-          type: string
-          description: Address to send the transaction calldata to
-        data:
-          type: string
-          description: Transaction calldata
-      required:
-      - to
-      - data

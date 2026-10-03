@@ -187,6 +187,66 @@ paths:
       - Purchase
 components:
   schemas:
+    PurchasePositionMetaHandlerDto:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        deprecated:
+          type: boolean
+          readOnly: true
+        handler:
+          type: object
+          readOnly: true
+        pool:
+          type: object
+          readOnly: true
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
+    PurchaseHistoryResponseDto:
+      type: object
+      properties:
+        txHash:
+          type: object
+          readOnly: true
+        timestamp:
+          type: number
+          readOnly: true
+        strike:
+          type: number
+          readOnly: true
+        size:
+          type: string
+          readOnly: true
+        ttl:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - call
+          - put
+        premium:
+          type: string
+          readOnly: true
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+      required:
+      - txHash
+      - timestamp
+      - strike
+      - size
+      - ttl
+      - type
+      - premium
+      - token
     QuoteResponseDto:
       type: object
       properties:
@@ -204,22 +264,6 @@ components:
       - token
       - premium
       - fees
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
     PurchasePositionsResponseDto:
       type: object
       properties:
@@ -277,63 +321,19 @@ components:
       - expiry
       - handlers
       - liquidities
-    PurchaseHistoryResponseDto:
+    TokenDto:
       type: object
       properties:
-        txHash:
-          type: object
-          readOnly: true
-        timestamp:
-          type: number
-          readOnly: true
-        strike:
-          type: number
-          readOnly: true
-        size:
+        address:
           type: string
-          readOnly: true
-        ttl:
-          type: number
-          readOnly: true
-        type:
+          description: Address of the ERC20 token
+        decimals:
           type: string
-          readOnly: true
-          enum:
-          - call
-          - put
-        premium:
+          description: Decimals of the ERC20 token
+        symbol:
           type: string
-          readOnly: true
-        token:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
+          description: Symbol of the ERC20 token
       required:
-      - txHash
-      - timestamp
-      - strike
-      - size
-      - ttl
-      - type
-      - premium
-      - token
-    PurchasePositionMetaHandlerDto:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        deprecated:
-          type: boolean
-          readOnly: true
-        handler:
-          type: object
-          readOnly: true
-        pool:
-          type: object
-          readOnly: true
-      required:
-      - name
-      - deprecated
-      - handler
-      - pool
+      - address
+      - decimals
+      - symbol

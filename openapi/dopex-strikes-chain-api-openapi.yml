@@ -58,6 +58,54 @@ paths:
       - strikes-chain
 components:
   schemas:
+    StrikesChainMetaDto:
+      type: object
+      properties:
+        hook:
+          type: string
+          readOnly: true
+        tickLower:
+          type: number
+          readOnly: true
+        tickUpper:
+          type: number
+          readOnly: true
+        totalTokenLiquidity:
+          type: string
+          readOnly: true
+        availableTokenLiquidity:
+          type: string
+          readOnly: true
+        totalLiquidity:
+          type: string
+          readOnly: true
+        availableLiquidity:
+          type: string
+          readOnly: true
+      required:
+      - hook
+      - tickLower
+      - tickUpper
+      - totalTokenLiquidity
+      - availableTokenLiquidity
+      - totalLiquidity
+      - availableLiquidity
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
     StrikesChainDto:
       type: object
       properties:
@@ -93,22 +141,15 @@ components:
       - handler
       - meta
       - token
-    HandlerMeta:
+    StrikesChainResponseDto:
       type: object
       properties:
-        name:
-          type: string
-        deprecated:
-          type: boolean
-        handler:
-          type: object
-        pool:
-          type: string
+        <strike price>:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/StrikesChainDto'
       required:
-      - name
-      - deprecated
-      - handler
-      - pool
+      - <strike price>
     TokenDto:
       type: object
       properties:
@@ -125,44 +166,3 @@ components:
       - address
       - decimals
       - symbol
-    StrikesChainResponseDto:
-      type: object
-      properties:
-        <strike price>:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/StrikesChainDto'
-      required:
-      - <strike price>
-    StrikesChainMetaDto:
-      type: object
-      properties:
-        hook:
-          type: string
-          readOnly: true
-        tickLower:
-          type: number
-          readOnly: true
-        tickUpper:
-          type: number
-          readOnly: true
-        totalTokenLiquidity:
-          type: string
-          readOnly: true
-        availableTokenLiquidity:
-          type: string
-          readOnly: true
-        totalLiquidity:
-          type: string
-          readOnly: true
-        availableLiquidity:
-          type: string
-          readOnly: true
-      required:
-      - hook
-      - tickLower
-      - tickUpper
-      - totalTokenLiquidity
-      - availableTokenLiquidity
-      - totalLiquidity
-      - availableLiquidity
