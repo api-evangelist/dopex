@@ -255,18 +255,6 @@ paths:
       - Stats
 components:
   schemas:
-    FeesResponseDto:
-      type: object
-      properties:
-        premiums:
-          type: number
-          readOnly: true
-        protocolFees:
-          type: number
-          readOnly: true
-      required:
-      - premiums
-      - protocolFees
     PnlDeltaResponseDto:
       type: object
       properties:
@@ -279,3 +267,15 @@ components:
       required:
       - delta
       - timestamp
+    FeesResponseDto:
+      type: object
+      properties:
+        premiums:
+          type: number
+          readOnly: true
+        protocolFees:
+          type: number
+          readOnly: true
+      required:
+      - premiums
+      - protocolFees

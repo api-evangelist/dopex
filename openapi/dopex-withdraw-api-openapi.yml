@@ -70,6 +70,34 @@ paths:
       - Withdraw
 components:
   schemas:
+    Strikes:
+      type: object
+      properties:
+        call:
+          type: number
+          description: Call strike
+        put:
+          type: number
+          description: Put strike
+      required:
+      - call
+      - put
+    HandlerMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        deprecated:
+          type: boolean
+        handler:
+          type: object
+        pool:
+          type: string
+      required:
+      - name
+      - deprecated
+      - handler
+      - pool
     WithdrawHistoryResponseDto:
       type: object
       properties:
@@ -102,46 +130,6 @@ components:
       - txHash
       - tokens
       - handler
-    HandlerMeta:
-      type: object
-      properties:
-        name:
-          type: string
-        deprecated:
-          type: boolean
-        handler:
-          type: object
-        pool:
-          type: string
-      required:
-      - name
-      - deprecated
-      - handler
-      - pool
-    Strikes:
-      type: object
-      properties:
-        call:
-          type: number
-          description: Call strike
-        put:
-          type: number
-          description: Put strike
-      required:
-      - call
-      - put
-    LiquidityToken0Token1:
-      type: object
-      properties:
-        amount0:
-          type: string
-          description: Amount of token0 provided as liquidity
-        amount1:
-          type: string
-          description: Amount of token1 provided as liquidity
-      required:
-      - amount0
-      - amount1
     TokenDto:
       type: object
       properties:
@@ -158,6 +146,18 @@ components:
       - address
       - decimals
       - symbol
+    LiquidityToken0Token1:
+      type: object
+      properties:
+        amount0:
+          type: string
+          description: Amount of token0 provided as liquidity
+        amount1:
+          type: string
+          description: Amount of token1 provided as liquidity
+      required:
+      - amount0
+      - amount1
     Token0Token1:
       type: object
       properties:

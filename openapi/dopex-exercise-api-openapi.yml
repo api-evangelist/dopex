@@ -116,22 +116,6 @@ paths:
       - exercise
 components:
   schemas:
-    TokenDto:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address of the ERC20 token
-        decimals:
-          type: string
-          description: Decimals of the ERC20 token
-        symbol:
-          type: string
-          description: Symbol of the ERC20 token
-      required:
-      - address
-      - decimals
-      - symbol
     ExerciseHistoryResponseDto:
       type: object
       properties:
@@ -182,6 +166,22 @@ components:
       - sizeToken
       - profitToken
       - txHash
+    TokenDto:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address of the ERC20 token
+        decimals:
+          type: string
+          description: Decimals of the ERC20 token
+        symbol:
+          type: string
+          description: Symbol of the ERC20 token
+      required:
+      - address
+      - decimals
+      - symbol
     TransactionData:
       type: object
       properties:

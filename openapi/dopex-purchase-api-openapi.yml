@@ -207,6 +207,63 @@ components:
       - deprecated
       - handler
       - pool
+    PurchasePositionMetaDto:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          readOnly: true
+        expiry:
+          type: number
+          readOnly: true
+        handlers:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
+        liquidities:
+          readOnly: true
+          type: array
+          items:
+            type: string
+      required:
+      - tokenId
+      - expiry
+      - handlers
+      - liquidities
+    PurchasePositionsResponseDto:
+      type: object
+      properties:
+        size:
+          type: string
+          readOnly: true
+        premium:
+          type: string
+          readOnly: true
+        strike:
+          type: number
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - call
+          - put
+        token:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/TokenDto'
+        meta:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PurchasePositionMetaDto'
+      required:
+      - size
+      - premium
+      - strike
+      - type
+      - token
+      - meta
     PurchaseHistoryResponseDto:
       type: object
       properties:
@@ -264,63 +321,6 @@ components:
       - token
       - premium
       - fees
-    PurchasePositionsResponseDto:
-      type: object
-      properties:
-        size:
-          type: string
-          readOnly: true
-        premium:
-          type: string
-          readOnly: true
-        strike:
-          type: number
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-          enum:
-          - call
-          - put
-        token:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/TokenDto'
-        meta:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/PurchasePositionMetaDto'
-      required:
-      - size
-      - premium
-      - strike
-      - type
-      - token
-      - meta
-    PurchasePositionMetaDto:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          readOnly: true
-        expiry:
-          type: number
-          readOnly: true
-        handlers:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/PurchasePositionMetaHandlerDto'
-        liquidities:
-          readOnly: true
-          type: array
-          items:
-            type: string
-      required:
-      - tokenId
-      - expiry
-      - handlers
-      - liquidities
     TokenDto:
       type: object
       properties:
