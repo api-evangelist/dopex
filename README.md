@@ -64,29 +64,156 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Dopex (Decentralized Options Exchange) is a DeFi protocol originally built on Arbitrum that pioneered Single Staking Option Vaults (SSOV) for on-chain options trading. The protocol has evolved into [Stryke](https://www.stryke.xyz), introducing Concentrated Liquidity AMM Options (CLAMM) and cross-chain support via LayerZero and Chainlink CCIP.
+Dopex (Decentralized Options Exchange) is a DeFi protocol built on Arbitrum that enables users to trade and write options through Single Staking Option Vaults (SSOV). The protocol uses a dual-token model — DPX (governance and fee accrual) and rDPX (rebate token) — and prices options on-chain using the Black-Scholes formula with implied volatility sourced via Chainlink adapters. SSOVs allow liquidity providers to lock collateral for monthly epochs and sell call or put options at defined strike prices, earning premiums plus base DeFi yield. Dopex has since evolved into Stryke (stryke.xyz), which extends the model with Concentrated Liquidity AMM Options (CLAMM) and cross-chain support via LayerZero and Chainlink CCIP. The REST API (api.stryke.xyz) exposes endpoints for option market data, strike chains, LP position management, trade history, and xSYK staking positions, supporting integrators building on-chain options products and analytics on Arbitrum and other EVM chains.
 
-## APIs
+**Areas:** DeFi · Decentralized Options · SSOV · Options Exchange · Arbitrum · DPX · rDPX · Staking · Implied Volatility · Black-Scholes · Options Pricing · CLAMM
 
-This profile covers three API surfaces:
+## Dopex on APIs.io
 
-- **CLAMM Options Trading API** — option market data, strikes chain, purchase quotes, trade calldata, and history
-- **LP Management API** — deposit/withdraw calldata, LP position queries, and transaction history
-- **xSYK Staking API** — vested and staked xSYK position queries by account address
+Everything profiled for Dopex is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dopex/](https://apis.io/providers/dopex/)** — or go straight to one of the APIs or properties below.
 
-Base URL: `https://api.stryke.xyz`
+### APIs (10)
 
-## Resources
+- [Dopex LP Management API](https://apis.io/apis/dopex/lp-management-api/) — REST API for liquidity providers participating in Dopex CLAMM vaults. Exposes endpoints to prepare deposit transaction calldata, query current LP positions…
+- [Dopex xSYK Staking Positions API](https://apis.io/apis/dopex/xsyk-staking-api/) — REST API for querying xSYK (escrowed SYK) staking and vesting positions for a given account address. Returns details of vested and staked xSYK allocations…
+- [Dopex Deposit API](https://apis.io/apis/dopex/dopex-deposit-api/) — The deposit API from Dopex — 3 operation(s) for deposit.
+- [Dopex Exercise API](https://apis.io/apis/dopex/dopex-exercise-api/) — The exercise API from Dopex — 2 operation(s) for exercise.
+- [Dopex Option Markets API](https://apis.io/apis/dopex/dopex-option-markets-api/) — The option-markets API from Dopex — 2 operation(s) for option-markets.
+- [Dopex Purchase API](https://apis.io/apis/dopex/dopex-purchase-api/) — The purchase API from Dopex — 3 operation(s) for purchase.
+- [Dopex Stats API](https://apis.io/apis/dopex/dopex-stats-api/) — The stats API from Dopex — 7 operation(s) for stats.
+- [Dopex Strikes Chain API](https://apis.io/apis/dopex/dopex-strikes-chain-api/) — The strikes-chain API from Dopex — 1 operation(s) for strikes-chain.
+- [Dopex Withdraw API](https://apis.io/apis/dopex/dopex-withdraw-api/) — The withdraw API from Dopex — 1 operation(s) for withdraw.
+- [Dopex xSYK API](https://apis.io/apis/dopex/dopex-xsyk-api/) — The xSYK API from Dopex — 1 operation(s) for xsyk.
 
-- Website: https://www.stryke.xyz
-- Documentation: https://docs.stryke.xyz
-- Legacy Dopex Docs: https://docs.dopex.io
-- GitHub: https://github.com/stryke-xyz
-- Discord: https://discord.gg/stryke
-- DefiLlama: https://defillama.com/protocol/dopex
+### Published properties
 
-## Supporting Files
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- [plans/plans.yml](plans/plans.yml) — API access plans and features
-- [rate-limits/rate-limits.yml](rate-limits/rate-limits.yml) — rate limit documentation
-- [finops/finops.yml](finops/finops.yml) — cost and financial operations guidance
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Dopex Agentic Access](https://apis.io/agentic-access/dopex/dopex-agentic-access/)
+
+#### JSON Schema (8)
+
+The data models the API reads and writes.
+
+- [OptionMarketsResponseDtoV2](https://apis.io/schemas/dopex/OptionMarketsResponseDtoV2/)
+- [PurchasePositionMetaDto](https://apis.io/schemas/dopex/PurchasePositionMetaDto/)
+- [PurchasePositionMetaHandlerDto](https://apis.io/schemas/dopex/PurchasePositionMetaHandlerDto/)
+- [PurchasePositionsResponseDto](https://apis.io/schemas/dopex/PurchasePositionsResponseDto/)
+- [QuoteResponseDto](https://apis.io/schemas/dopex/QuoteResponseDto/)
+- [TokenDto](https://apis.io/schemas/dopex/TokenDto/)
+- [UserXSykDataResponseDto](https://apis.io/schemas/dopex/UserXSykDataResponseDto/)
+- [VestPositionsResponseDto](https://apis.io/schemas/dopex/VestPositionsResponseDto/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Purchase Quote Response](https://apis.io/examples/dopex/purchase-quote-response/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Stryke deposit API](https://apis.io/collections/dopex/open-dopex-deposit-api/)
+- [Stryke deposit exercise API](https://apis.io/collections/dopex/open-dopex-exercise-api/)
+- [Stryke deposit option-markets API](https://apis.io/collections/dopex/open-dopex-option-markets-api/)
+- [Stryke deposit purchase API](https://apis.io/collections/dopex/open-dopex-purchase-api/)
+- [Stryke deposit stats API](https://apis.io/collections/dopex/open-dopex-stats-api/)
+- [Stryke deposit strikes-chain API](https://apis.io/collections/dopex/open-dopex-strikes-chain-api/)
+- [Stryke deposit withdraw API](https://apis.io/collections/dopex/open-dopex-withdraw-api/)
+- [Stryke deposit xSYK API](https://apis.io/collections/dopex/open-dopex-xsyk-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Dopex — jsonschema rules](https://apis.io/rules/dopex/dopex-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Dopex Domain Security](https://apis.io/security/dopex/dopex-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/dopex/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/dopex/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/dopex/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.stryke.xyz)
+- [Documentation](https://docs.stryke.xyz)
+- [Blog](https://teamdopex.medium.com)
+
+## API Evangelist rating
+
+**Kin Score 22.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.7 |
+| Contract quality | 38.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dopex/](https://apis.io/providers/dopex/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Dopex: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dopex/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
